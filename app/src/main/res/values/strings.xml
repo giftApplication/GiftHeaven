@@ -1,3 +1,57 @@
 <resources>
     <string name="app_name">Gift Heaven</string>
+    <string name="App_Name">Gift Heaven</string>
+
+    <string name="hello_register_fragment">Hello register fragment</string>
+    <string name="hello_login_fragment">Hello login fragment</string>
+    <string name="nav_event">Event</string>
+    <string name="nav_category">Category</string>
+    <string name="nav_budget">Budget</string>
+    <string name="dialg_msg">You want to get a gift for birthday party for a kid with a budget Rs.500 </string>
+    <string name="confirm"> Do you want to continue? </string>
+
+    <string-array name="Event">
+        <item>Birthday Party</item>
+        <item>New Year Party</item>
+        <item>Wedding</item>
+        <item>Engagement</item>
+    </string-array>
+    <string-array name="Category">
+        <item>Male</item>
+        <item>Kids</item>
+        <item>Female</item>
+
+    </string-array>
+
+    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
+    <integer name="password_strike">320</integer>
+
+    <string-array name="Budget">
+        <item>300-500</item>
+        <item>500-1000</item>
+        <item>1000-2000</item>
+        <item>More</item>
+
+    </string-array>
+
+    <string name="tag_line">Matching gifts to people</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="event_fragment">Event</string>
+    <string name="category_fragment">Category</string>
+    <string name="budget_fragment">Budget</string>
+    <string name="view_details"><u>View Details</u></string>
+    >
+    <string name="UserName">UserName</string>
+    <string name="pass">Password</string>
+    <string name="login">Login</string>
+    <string name="login_gmail">Login with Gmail</string>
+    <string name="login_fb">Login with Facebook</string>
+    <string name="email">E-mail</string>
+    <string name="reg">Register</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
