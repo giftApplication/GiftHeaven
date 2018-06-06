@@ -1,0 +1,46 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.moon.giftheaven.views.fragments.FragmentEvent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+    <RelativeLayout
+
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:id="@+id/r1">
+
+
+        <com.kofigyan.stateprogressbar.StateProgressBar
+            android:id="@+id/p_bar"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_height="wrap_content"
+            app:spb_stateBackgroundColor="@color/color2"
+            app:spb_stateForegroundColor="@color/color14"
+            app:spb_currentStateDescriptionColor="@color/color14"
+            app:spb_stateDescriptionColor="@color/color2"
+            app:spb_animateToCurrentProgressState="true"
+            app:spb_currentStateNumber="one"
+            app:spb_maxStateNumber="three"/>
+
+
+
+        <ListView
+            android:layout_marginTop="130dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:isScrollContainer="true"
+            android:id="@+id/list">
+
+        </ListView>
+
+    </RelativeLayout>
+</LinearLayout>
+
+
+
