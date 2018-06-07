@@ -2,6 +2,8 @@
     <string name="app_name">Gift Heaven</string>
     <string name="App_Name">Gift Heaven</string>
 
+    <string name="facebook_app_id">215779309202456</string>
+
     <string name="hello_register_fragment">Hello register fragment</string>
     <string name="hello_login_fragment">Hello login fragment</string>
     <string name="nav_event">Event</string>

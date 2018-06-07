@@ -132,7 +132,8 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/google_btn"
+
+                android:id="@+id/fb_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fb_login"
@@ -151,7 +152,7 @@
                 android:textStyle="bold" />
             <Button
 
-                android:id="@+id/fb_login"
+                android:id="@+id/google_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/google_login"
