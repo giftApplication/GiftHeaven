@@ -66,6 +66,7 @@
                 />
 
             <EditText
+                android:id="@+id/name"
                 android:hint="@string/UserName"
                 android:drawableStart="@drawable/u"
                 android:layout_width="match_parent"
@@ -93,8 +94,10 @@
 
                 />
 
+
+
             <EditText
-                android:inputType="textEmailAddress"
+                android:id="@+id/email"
                 android:hint="@string/email"
                 android:drawableStart="@drawable/e"
                 android:drawableLeft="@drawable/e"
@@ -105,6 +108,7 @@
                 android:fontFamily="serif"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/color14"
                 android:textSize="15dp"
                 />
@@ -137,6 +141,7 @@
                     android:drawableLeft="@drawable/p"
                     android:drawableStart="@drawable/p"
                     android:background="@drawable/rec_bg1"
+
                     android:fontFamily="serif"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
@@ -144,6 +149,7 @@
                     android:textSize="15dp"
                     android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
+
 
 
 

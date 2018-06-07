@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.moon.giftheaven.R;
-//import com.example.moon.giftheaven.views.activities.Gmail_User_Info;
-//import com.example.moon.giftheaven.views.activities.MyDB;
+import com.example.moon.giftheaven.views.activities.Gmail_User_Info;
+import com.example.moon.giftheaven.views.activities.MyDB;
 import com.example.moon.giftheaven.views.activities.after_login_activity;
 import com.facebook.FacebookSdk;
 import com.google.android.gms.auth.api.Auth;
@@ -32,29 +33,14 @@ import com.mukeshsolanki.sociallogin.facebook.FacebookListener;
 import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.views.activities.after_login_activity;
 
-public class login_Fragment extends Fragment implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener,FacebookListener{
-
-
-    FacebookHelper fb_helper;
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        fb_helper.onActivityResult(requestCode,resultCode,data);
-
-        if(requestCode==SIGN_IN_CODE){
-            GoogleSignInResult result= Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleSignInResult(result);
-        }
-    }
-
-
+public class login_Fragment extends Fragment implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleApiClient googleApiClient;
-    Button login, fb_login,g_login;
-    //private SignInButton gmail_btn;
-
+    Button login, f_login,g_login;
+    EditText uname, upassword;
+    MyDB myDB;
+    SQLiteDatabase db;
+    Cursor cursor;
     public static final int SIGN_IN_CODE=777;
 
     public void login_Fragemnt()
@@ -67,25 +53,9 @@ public class login_Fragment extends Fragment implements View.OnClickListener, Go
                              Bundle savedInstanceState) {
         View root =  inflater.inflate(R.layout.fragment_login_, container, false);
         System.out.println("login Fragment");
-
-        //........................................Login with facebook wala kaam..................................................
-
-        FacebookSdk.setApplicationId(getResources().getString(R.string.facebook_app_id));
-        FacebookSdk.sdkInitialize(getActivity());
-        fb_helper=new FacebookHelper(login_Fragment.this);
-
-        fb_login=(Button)root.findViewById(R.id.fb_login);
-        fb_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fb_helper.performSignIn(getActivity());
-
-            }
-        });
-
-
-
-
+        uname = root.findViewById(R.id.uname);
+        upassword = root.findViewById(R.id.upassword);
+        upassword.setHint("Password");
 
         //...........................................................................
 
@@ -121,27 +91,9 @@ public class login_Fragment extends Fragment implements View.OnClickListener, Go
 
         login = (Button)root.findViewById(R.id.login_btn);
         login.setOnClickListener(this);
+
+
         return root;
-    }
-
-
-
-    @Override
-    public void onFbSignInFail(String errorMessage) {
-        Toast.makeText(getActivity(),"Not LoggedIn with Facebook!"+errorMessage,Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public void onFbSignInSuccess(String authToken, String userId) {
-        Toast.makeText(getActivity(),"Successfully Signed In! "+userId,Toast.LENGTH_SHORT).show();
-        Intent myIntent1 = new Intent(getActivity().getApplicationContext(), after_login_activity.class);
-        startActivity(myIntent1);
-    }
-
-    @Override
-    public void onFBSignOut() {
-        Toast.makeText(getActivity(),"Signed Out!",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -153,19 +105,46 @@ public class login_Fragment extends Fragment implements View.OnClickListener, Go
 
     @Override
     public void onClick(View view) {
-        Intent myIntent = new Intent(getActivity().getApplicationContext(),after_login_activity.class);
-        startActivity(myIntent);
+        myDB = new MyDB(getActivity());
+        db = myDB.getReadableDatabase();
+
+        if(checkDataEntered()) {
+
+            String[] columns = {"name", "pass"};
+            String[] uValues = {uname.getText().toString(), upassword.getText().toString()};
+
+            cursor = db.query("User", columns, "name=? AND pass=?", uValues, null, null, null);
+
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    Intent myIntent = new Intent(getActivity().getApplicationContext(), after_login_activity.class);
+                    myIntent.putExtra("Username", uname.getText().toString());
+                    startActivity(myIntent);
+                } else {
+                    Toast.makeText(getActivity(), "Invalid Username or Password!", Toast.LENGTH_LONG).show();
+                    uname.setText(""); upassword.setText("");
+                }
+            }
+        }
+
+
     }
 
-
+    //..............................................................................
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-
-
+        if(requestCode==SIGN_IN_CODE){
+            GoogleSignInResult result= Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+    }
 
     private void handleSignInResult(GoogleSignInResult result) {
         if(result.isSuccess())
@@ -174,7 +153,7 @@ public class login_Fragment extends Fragment implements View.OnClickListener, Go
         }
         else
         {
-            Toast.makeText(getActivity(), "Not LoggedIn with Gmail!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.not_log_in,Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -184,4 +163,21 @@ public class login_Fragment extends Fragment implements View.OnClickListener, Go
         startActivity(i);
     }
 
+    private boolean checkDataEntered() {
+        if(isEmpty(upassword) || isEmpty(uname)) {
+            if (isEmpty(uname))
+                uname.setError("UserName required");
+            if (isEmpty(upassword))
+                upassword.setError("Passowrd required");
+            return false;
+        }
+        else return true;
+    }
+
+    private boolean isEmpty(EditText t) {
+        CharSequence text = t.getText().toString();
+        return (TextUtils.isEmpty(text));
+
+    }
+    //..............................................................................
 }

@@ -53,6 +53,8 @@
     <string name="login_fb">Login with Facebook</string>
     <string name="email">E-mail</string>
     <string name="reg">Register</string>
+    <string name="not_log_in">Try Again! Not logged in to Gmail Account</string>
+    <string name="title_activity_gmail__user__info">Gmail_User_Info</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
