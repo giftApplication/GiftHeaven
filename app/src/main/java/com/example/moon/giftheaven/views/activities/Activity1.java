@@ -59,7 +59,6 @@ public class Activity1 extends AppCompatActivity {
             }
         });
 
-
     }
     // set navigation
     private BottomNavigationView.OnNavigationItemSelectedListener nav =

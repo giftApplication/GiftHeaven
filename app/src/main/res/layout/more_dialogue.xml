@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linear_account"
+    android:layout_width="match_parent"
+    android:layout_marginTop="30dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background= "@android:color/transparent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background= "@android:color/transparent"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView_account_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="1dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dialogue_shape"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/linear_account_input_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="0dp"
+                        android:fontFamily="serif"
+                        android:textAlignment="center"
+                        android:textColor="@color/color14"
+                        android:text="Enter Your Range"
+                        android:textSize="15dp"
+                        android:textStyle="normal"
+                        />
+                    <EditText
+                        android:inputType="number"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:background="@drawable/rec_bg1"
+                        android:fontFamily="serif"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/color14"
+                        android:hint="Enter range"
+                        android:textSize="15dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+
+                            android:id="@+id/btn_ok"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/dialog_btns"
+                            android:fontFamily="serif"
+                            android:paddingLeft="40dp"
+                            android:paddingRight="40dp"
+                            android:text="Ok"
+                            android:textAllCaps="false"
+                            android:textColor="@color/color1"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:alpha="1.0"
+        android:src="@drawable/logo_main" />
+
+</RelativeLayout>

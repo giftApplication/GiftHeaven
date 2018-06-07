@@ -47,5 +47,8 @@ public class event_category_budget extends FragmentPagerAdapter {
     public int getCount() {
         return fragments;
     }
+
+
+
 }
 

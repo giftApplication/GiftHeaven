@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title=""
+        android:id="@+id/as"
+        android:icon="@mipmap/icon"
+        app:showAsAction="always"
+        >
+
+        <menu>
+            <item android:id="@+id/feedback"
+                android:icon="@mipmap/feedback"
+                app:showAsAction="never"
+                android:title="Feedback">
+
+            </item>
+
+            <item android:id="@+id/rate"
+                android:icon="@mipmap/rate"
+                app:showAsAction="never"
+                android:title="RateUs">
+
+            </item>
+
+            <item android:id="@+id/share"
+                android:icon="@mipmap/share"
+                app:showAsAction="never"
+                android:title="Share">
+
+            </item>
+        </menu>
+    </item>
 
 </menu>

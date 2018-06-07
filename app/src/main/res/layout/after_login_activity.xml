@@ -35,12 +35,13 @@ android:id="@+id/frag_2">
 
     </android.support.design.widget.BottomNavigationView>
 
-
-    <android.support.v4.view.ViewPager
+    <com.example.moon.giftheaven.views.fragments.LockViewpager
         android:id="@+id/pager1"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"></android.support.v4.view.ViewPager>
+        android:layout_width="match_parent"
+        />
+
+
 
 
 </RelativeLayout>

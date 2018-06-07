@@ -12,13 +12,16 @@ import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.views.adapter.list_view_adapter;
 import com.kofigyan.stateprogressbar.StateProgressBar;
 
+import static com.example.moon.giftheaven.views.activities.after_login_activity.pager1;
+import static com.example.moon.giftheaven.views.activities.after_login_activity.check;
+
 import static com.example.moon.giftheaven.views.fragments.FragmentEvent.p_bar;
 
 /**
  * Created by Asad on 6/6/2018.
  */
 
-public class FragmentCategory extends Fragment  {
+public class FragmentCategory extends Fragment implements AdapterView.OnItemClickListener {
 
 
     private list_view_adapter my_adapter;
@@ -46,13 +49,22 @@ public class FragmentCategory extends Fragment  {
         p_bar.setStateDescriptionData(descriptionData);
 
         list.setAdapter(my_adapter);
-
+        list.setOnItemClickListener(this);
         // Inflate the layout for this fragment
         return root;
 
 
     }
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        p_bar.checkStateCompleted(true);
+        p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+        check = 2;
+        pager1.setCurrentItem(2);
+
+    }
+
 
 
 }
-
