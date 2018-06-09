@@ -14,6 +14,7 @@ import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.views.adapter.CustomListView;
 
 
+
 public class main_activity extends AppCompatActivity {
     ListView lst;
     TextView view_details ;
@@ -24,6 +25,12 @@ public class main_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity);
+
+
+
+
+
+
 
         myToolbar = findViewById(R.id.mytoolbar);
         myToolbar.setTitle("");

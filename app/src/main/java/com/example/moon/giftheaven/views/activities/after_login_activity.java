@@ -169,25 +169,31 @@ public class after_login_activity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu,menu);
         return super.onCreateOptionsMenu(menu);
+
     }
     public  boolean onOptionsItemSelected(MenuItem item){
         int id=item.getItemId();
         //menu item handling
+
         if(id==R.id.feedback)
         {
             Toast.makeText(this, "FeedBack", Toast.LENGTH_SHORT).show();
+
+        }
+        if(id==R.id.rate)
+        {
+            Intent intent=new Intent(this,SmileyRating.class);
+           startActivity(intent);
+
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market:// details?id=" + getPackageName())));
             }
             catch (ActivityNotFoundException e)
-            {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?=" + getPackageName())));
+           {
+               startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?=" + getPackageName())));
 
             }
-        }
-        if(id==R.id.rate);
-        {
-            Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
         }
         if(id==R.id.share)
         {
