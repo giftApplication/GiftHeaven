@@ -30,6 +30,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/list1"
         >
-
     </ListView>
 </LinearLayout>

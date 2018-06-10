@@ -30,6 +30,7 @@ public class FragmentEvent extends Fragment implements AdapterView.OnItemClickLi
 
     private list_view_adapter my_adapter;
     public static StateProgressBar p_bar;
+    public static  String event;
     String[] descriptionData = {"Events", "Category", "Budget"};
 
     String[] events_name;
@@ -68,12 +69,10 @@ public class FragmentEvent extends Fragment implements AdapterView.OnItemClickLi
         p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
         p_bar.checkStateCompleted(true);
         p_bar.setStateDescriptionTypeface("cursive");
+        event = (String) adapterView.getItemAtPosition(i);
         check= 1;
         pager1.setCurrentItem(1);
 
 
     }
-
-
-
 }

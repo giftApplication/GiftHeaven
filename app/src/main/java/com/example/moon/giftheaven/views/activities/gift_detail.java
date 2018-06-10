@@ -1,6 +1,7 @@
 package com.example.moon.giftheaven.views.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +11,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.moon.giftheaven.R;
+import com.example.moon.giftheaven.models.Gift;
 import com.example.moon.giftheaven.views.adapter.CustomListView;
+
+import java.util.ArrayList;
 
 
 public class gift_detail extends AppCompatActivity {
-    int pos=0;
+    int pos;
 
     Toolbar myToolbar;
     @Override
@@ -41,24 +46,33 @@ public class gift_detail extends AppCompatActivity {
                     }
                 }
         );
-
-
+        final CustomListView adapter=new CustomListView(this);
         Intent intent=getIntent();
         pos=intent.getExtras().getInt("Position");
+        System.out.println("index_other" + pos);
 
 
-        final CustomListView adapter=new CustomListView(this);
-        final ImageView img=(ImageView) findViewById(R.id.img_gift);
-        final TextView name=(TextView) findViewById(R.id.text1_1);
-        final TextView price=(TextView) findViewById(R.id.text_d1_1);
+        ImageView img=(ImageView) findViewById(R.id.img_gift);
+         TextView name=(TextView) findViewById(R.id.text1_1);
+         TextView price=(TextView) findViewById(R.id.text_d1_1);
+        TextView description=(TextView) findViewById(R.id.text_d1_3);
 
+        Cursor cursor = main_activity.sqlLiteHelper.get_data_by_ID(pos);
 
+        if(cursor!=null) {
+            System.out.println(cursor.getInt( 0 ));
+          //  if(cursor.moveToFirst()) {
+                img.setImageResource(cursor.getInt(3));
+                //cursor.get
+                Toast.makeText(this,"position is " + pos,Toast.LENGTH_LONG);
+                name.setText("Name:   " + cursor.getString(1));
+                price.setText("Price:   " + cursor.getString(2));
+                description.setText(cursor.getString( 7) );
+                Toast.makeText(this, cursor.getInt(1)+cursor.getInt(2)+cursor.getInt(3),Toast.LENGTH_LONG);
+          //  }
+        }
 
-        //set data
-        img.setImageResource(adapter.imgid[pos]);
-
-        name.setText("Name:  "+adapter.gift_names[pos]);
-        price.setText("Price:  "+adapter.desc[pos]);
+        cursor.close();
 
         Button btn_gift=(Button) findViewById(R.id.btn_shop);
 

@@ -11,12 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.views.activities.main_activity;
 import com.example.moon.giftheaven.views.adapter.list_view_adapter;
 import com.kofigyan.stateprogressbar.StateProgressBar;
+
+import java.util.ArrayList;
 
 import static com.example.moon.giftheaven.views.activities.after_login_activity.check;
 import static com.example.moon.giftheaven.views.fragments.FragmentEvent.p_bar;
@@ -32,6 +35,8 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
     String[] budget_name;
     String[] descriptionData = {"Events", "Category", "Budget"};
     Context context;
+    public static ArrayList<String> Budget ;
+    String bud;
     Dialog dialog ;
     Dialog dialog1;
     ListView list;
@@ -69,10 +74,20 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+        Budget = new ArrayList<>();
         switch(i) {
             case 0:
                 p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 p_bar.checkStateCompleted(true);
+
+                bud = (String) adapterView.getItemAtPosition(i);
+                String[] budget=bud.split("-");
+
+                //System.out.println("parts " + budget[0] + "& " + budget[1]);
+                Budget.add( budget[0] ); Budget.add( budget[1] );
+
+                System.out.println("parts " + Budget.get(0) + "& " + Budget.get(1));
+
                 dialog.setContentView(R.layout.dialog_layout);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.show();
@@ -84,6 +99,13 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
             case 1:
                 p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 p_bar.checkStateCompleted(true);
+
+                bud = (String) adapterView.getItemAtPosition(i);
+                budget=bud.split( "-" );
+                Budget.add( budget[0] ); Budget.add( budget[1] );
+
+                System.out.println("parts " + Budget.get(0) + "& " + Budget.get(1));
+
                 dialog.setContentView(R.layout.dialog_layout);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.show();
@@ -95,6 +117,13 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
             case 2:
                 p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 p_bar.checkStateCompleted(true);
+
+                bud = (String) adapterView.getItemAtPosition(i);
+                budget=bud.split( "-" );
+                Budget.add( budget[0] ); Budget.add( budget[1] );
+
+                System.out.println("parts " + Budget.get(0) + "& " + Budget.get(1));
+
                 dialog.setContentView(R.layout.dialog_layout);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.show();
@@ -109,6 +138,7 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
                 dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog1.show();
                 Button btn_ok = dialog1.findViewById(R.id.btn_ok);
+
                 btn_ok.setOnClickListener(this);
                 p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
                 break;
@@ -128,9 +158,16 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
                 break;
             case R.id.btn_ok:
                 p_bar.checkStateCompleted(true);
+                EditText range = (EditText)dialog1.findViewById(R.id.range);
+                bud = range.getText().toString();
+                Budget.add( bud );
+
+                System.out.println("parts " + Budget.get(0));
+
                 dialog1.setContentView(R.layout.dialog_layout);
                 dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog1.show();
+
                 Button btn_yes = dialog1.findViewById(R.id.btn_yes);
                 Button btn_no = dialog1.findViewById(R.id.btn_no);
                 btn_yes.setOnClickListener(this);

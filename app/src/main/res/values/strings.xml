@@ -13,8 +13,8 @@
     <string name="confirm"> Do you want to continue? </string>
 
     <string-array name="Event">
-        <item>Birthday Party</item>
-        <item>New Year Party</item>
+        <item>Birthday</item>
+        <item>New Year</item>
         <item>Wedding</item>
         <item>Engagement</item>
     </string-array>
@@ -32,9 +32,9 @@
     <integer name="password_strike">320</integer>
 
     <string-array name="Budget">
-        <item>300-500</item>
         <item>500-1000</item>
         <item>1000-2000</item>
+        <item>2000-3000</item>
         <item>More</item>
 
     </string-array>

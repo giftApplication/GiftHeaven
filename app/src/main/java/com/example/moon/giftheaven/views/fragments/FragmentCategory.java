@@ -26,6 +26,7 @@ public class FragmentCategory extends Fragment implements AdapterView.OnItemClic
 
     private list_view_adapter my_adapter;
     //ProgressBar p2;
+    public static  String category;
     String[] category_name;
     String[] descriptionData = {"Events", "Category", "Budget"};
     ListView list;
@@ -59,6 +60,7 @@ public class FragmentCategory extends Fragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
         p_bar.checkStateCompleted(true);
+        category= (String)adapterView.getItemAtPosition(i);
         p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
         check = 2;
         pager1.setCurrentItem(2);

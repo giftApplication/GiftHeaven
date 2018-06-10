@@ -64,6 +64,7 @@
                         android:fontFamily="serif"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:id="@+id/range"
                         android:textColor="@color/color14"
                         android:hint="Enter range"
                         android:textSize="15dp"
