@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.moon.giftheaven">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/facebook_app_id" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,15 +27,9 @@
         <activity android:name=".views.activities.Activity1" />
         <activity android:name=".views.activities.after_login_activity" />
         <activity android:name=".views.activities.main_activity" />
-        <activity android:name=".views.activities.gift_detail"></activity>
-        <activity android:name=".views.activities.Gmail_User_Info"></activity>
-
-
+        <activity android:name=".views.activities.gift_detail" />
+        <activity android:name=".views.activities.Gmail_User_Info" />
+        <activity android:name=".views.activities.SmileyRating"></activity>
     </application>
-
-
-    <meta-data
-        android:name="com.facebook.sdk.ApplicationId"
-        android:value="@string/facebook_app_id"/>
 
 </manifest>

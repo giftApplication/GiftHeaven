@@ -1,9 +1,11 @@
 package com.example.moon.giftheaven.views.activities;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -167,6 +169,47 @@ public class after_login_activity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu,menu);
         return super.onCreateOptionsMenu(menu);
+
+    }
+    public  boolean onOptionsItemSelected(MenuItem item){
+        int id=item.getItemId();
+        //menu item handling
+
+        if(id==R.id.feedback)
+        {
+            Toast.makeText(this, "FeedBack", Toast.LENGTH_SHORT).show();
+
+        }
+        if(id==R.id.rate)
+        {
+            Intent intent=new Intent(this,SmileyRating.class);
+           startActivity(intent);
+
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market:// details?id=" + getPackageName())));
+            }
+            catch (ActivityNotFoundException e)
+           {
+               startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?=" + getPackageName())));
+
+            }
+           Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.share)
+        {
+            Intent myIntent= new Intent(Intent.ACTION_SEND);
+            myIntent.setType("text/plain");
+            String shareBody="Your Body here";
+            String shareSub="Your subject here";
+            myIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+            myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+            startActivity(Intent.createChooser(myIntent,"Share using"));
+
+
+            Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

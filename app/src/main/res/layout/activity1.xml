@@ -30,5 +30,6 @@
             android:id="@+id/pager"
             >
         </android.support.v4.view.ViewPager>
+
     </RelativeLayout>
 </FrameLayout>
