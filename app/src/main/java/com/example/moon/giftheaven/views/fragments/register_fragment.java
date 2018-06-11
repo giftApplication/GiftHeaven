@@ -2,6 +2,7 @@ package com.example.moon.giftheaven.views.fragments;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,7 +39,8 @@ public class register_fragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_register_fragment, container, false);
         // root.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        System.out.println("Register Fragment");
+        getActivity().setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         name_=root.findViewById(R.id.name);
         email_=root.findViewById(R.id.email);
         password_=root.findViewById(R.id.password);

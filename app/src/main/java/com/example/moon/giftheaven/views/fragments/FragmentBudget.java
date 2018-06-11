@@ -3,6 +3,7 @@ package com.example.moon.giftheaven.views.fragments;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -55,6 +56,8 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
         dialog = new Dialog(getActivity());
         dialog1 = new Dialog(getActivity());
         View root = inflater.inflate(R.layout.fragment_fragment_budget, container, false);
+        getActivity().setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         p_bar = (StateProgressBar) root.findViewById(R.id.p_bar);
         p_bar.setStateDescriptionData(descriptionData);

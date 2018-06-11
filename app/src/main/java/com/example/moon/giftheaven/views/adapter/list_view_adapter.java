@@ -2,6 +2,7 @@ package com.example.moon.giftheaven.views.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class list_view_adapter extends ArrayAdapter<String>
     String[] myTitles;
     public list_view_adapter(Activity c , String[] titles, int[] images){
         super(c, R.layout.layout_on_list,R.id.text,titles);
+        //setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.context=c;
         this.imgs=images;
         this.myTitles=titles;

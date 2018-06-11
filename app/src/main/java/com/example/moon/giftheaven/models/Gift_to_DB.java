@@ -31,7 +31,7 @@ public class Gift_to_DB {
 
 
     public Gift_to_DB() {
-        //DB created                            //0/                                    //  1                   //2                        //3                     //4                      //5                         //6                         //7
+        //DB created                            //0/                                    //  1                   //2                        //3                     //4                      //5                         //6                         //7                     //9
         query = "CREATE TABLE IF NOT EXISTS GIFT(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR NOT NULL, Price  VARCHAR NOT NULL, Images INTEGER NOT NULL, Event VARCHAR NOT NULL, Category VARCHAR NOT NULL, Budget VARCHAR NOT NULL , Description VARCHAR NOT NULL, Link VARCHAR)";
         main_activity.sqlLiteHelper.queryData(query);
 
@@ -41,7 +41,7 @@ public class Gift_to_DB {
         byte[] img=bos.toByteArray();*/
 
         //insert_into_DB();
-        delete_from_DB();
+        //delete_from_DB();
         //drop_table();
         Cursor cur =main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
         if(!(cur.moveToNext()) || cur.equals(null) ) insert_into_DB();

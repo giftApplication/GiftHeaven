@@ -2,6 +2,7 @@ package com.example.moon.giftheaven.views.activities;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -33,6 +34,8 @@ public class gift_detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gift_detail);
+
+        setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         dialogf = new Dialog(this);
         dialogr = new Dialog(this);

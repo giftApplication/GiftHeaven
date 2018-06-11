@@ -5,6 +5,7 @@ package com.example.moon.giftheaven.views.fragments;
  */
 
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -47,6 +48,8 @@ public class FragmentEvent extends Fragment implements AdapterView.OnItemClickLi
                              Bundle savedInstanceState) {
         events_name = getResources().getStringArray(R.array.Event);
         View root = inflater.inflate(R.layout.fragment_fragment_event, container, false);
+        getActivity().setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         p_bar = (StateProgressBar) root.findViewById(R.id.p_bar);
         p_bar.setStateDescriptionData(descriptionData);

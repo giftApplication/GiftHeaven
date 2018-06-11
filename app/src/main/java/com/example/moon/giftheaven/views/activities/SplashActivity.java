@@ -4,6 +4,7 @@ package com.example.moon.giftheaven.views.activities;
  * Created by HP on 6/5/2018.
  */
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -25,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity);
+        setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         lottieAnimationView = (LottieAnimationView) findViewById(R.id.animation_view);
         lottieAnimationView.setImageAssetsFolder("assets/");

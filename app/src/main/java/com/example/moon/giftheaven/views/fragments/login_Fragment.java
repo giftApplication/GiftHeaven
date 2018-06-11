@@ -2,6 +2,7 @@ package com.example.moon.giftheaven.views.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -53,7 +54,8 @@ public class login_Fragment extends Fragment implements View.OnClickListener, Go
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root =  inflater.inflate(R.layout.fragment_login_, container, false);
-        System.out.println("login Fragment");
+        getActivity().setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         uname = root.findViewById(R.id.uname);
         upassword = root.findViewById(R.id.upassword);
         upassword.setHint("Password");

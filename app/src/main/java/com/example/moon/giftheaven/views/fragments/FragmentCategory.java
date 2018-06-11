@@ -1,5 +1,6 @@
 package com.example.moon.giftheaven.views.fragments;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -42,6 +43,8 @@ public class FragmentCategory extends Fragment implements AdapterView.OnItemClic
         category_name= getResources().getStringArray(R.array.Category);
 
         View root = inflater.inflate(R.layout.fragment_fragment_category, container, false);
+        getActivity().setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         list=(ListView)root.findViewById(R.id.list_1);
 
         my_adapter = new list_view_adapter(getActivity(),category_name,imgs);
