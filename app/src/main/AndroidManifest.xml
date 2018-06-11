@@ -29,7 +29,7 @@
         <activity android:name=".views.activities.main_activity" />
         <activity android:name=".views.activities.gift_detail" />
         <activity android:name=".views.activities.Gmail_User_Info" />
-        <activity android:name=".views.activities.SmileyRating"></activity>
+
     </application>
 
 </manifest>

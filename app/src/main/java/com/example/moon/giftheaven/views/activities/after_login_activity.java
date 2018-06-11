@@ -2,12 +2,8 @@ package com.example.moon.giftheaven.views.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -23,14 +19,14 @@ import android.widget.Toast;
 import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.views.adapter.event_category_budget;
 import com.example.moon.giftheaven.views.fragments.LockViewpager;
-
-import static com.example.moon.giftheaven.views.fragments.FragmentEvent.p_bar;
+import com.example.moon.giftheaven.views.fragments.RatingActivity;
 
 public class after_login_activity extends AppCompatActivity {
     event_category_budget adapter;
     static public LockViewpager pager1;
     /*********************************/
     Dialog dialogf;
+    Dialog dialogr;
     String title;
     Toolbar myToolbar;
     static public int check;
@@ -45,6 +41,7 @@ public class after_login_activity extends AppCompatActivity {
         check = 0;
 /**********/
         dialogf = new Dialog(this);
+        dialogr = new Dialog(this);
         pager1 = findViewById(R.id.pager1);
         pager1.setSwipeable(false);
         // pager1.setEnabled(false);
@@ -200,17 +197,38 @@ public class after_login_activity extends AppCompatActivity {
 
         }
         if (id == R.id.rate) {
+            Toast.makeText(this, "Rate us ", Toast.LENGTH_SHORT).show();
+            dialogr.setContentView(R.layout.activity_rating);
+            dialogr.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialogr.show();
+            Button btn_rate = dialogr.findViewById(R.id.btn_rate);
+              btn_rate.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  dialogr.dismiss();
+
+                                              }
+
+                                          });
+                                      }
+
+
+
+
+
            /* Intent intent=new Intent(this,SmileyRating.class);
            startActivity(intent);*/
+           // Intent rintent = new Intent(this, RatingActivity.class);
+            //startActivity(rintent);
 
-            try {
+           /* try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market:// details?id=" + getPackageName())));
             } catch (ActivityNotFoundException e) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?=" + getPackageName())));
 
-            }
-            Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
-        }
+            }*/
+
+
         if (id == R.id.share) {
             Intent myIntent = new Intent(Intent.ACTION_SEND);
             myIntent.setType("text/plain");
