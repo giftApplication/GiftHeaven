@@ -68,7 +68,7 @@ public class FragmentEvent extends Fragment implements AdapterView.OnItemClickLi
 
         p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
         p_bar.checkStateCompleted(true);
-        p_bar.setStateDescriptionTypeface("cursive");
+        //p_bar.setStateDescriptionTypeface("cursive");
         event = (String) adapterView.getItemAtPosition(i);
         check= 1;
         pager1.setCurrentItem(1);

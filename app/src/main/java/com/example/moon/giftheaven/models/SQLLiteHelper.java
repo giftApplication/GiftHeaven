@@ -26,10 +26,10 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
             database.execSQL(sql);
     }
 
-    public void insertData(String name, String price, int image, String desc, String event, String cat, String bud)
+    public void insertData(String name, String price, int image, String desc, String event, String cat, String bud, String link)
     {
         database = getWritableDatabase();
-        query= "INSERT INTO GIFT VALUES (NULL, ?, ?, ?, ?, ?, ?, ?) ";
+        query= "INSERT INTO GIFT VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
         statement = database.compileStatement(query);
         statement.clearBindings();
@@ -41,6 +41,7 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
         statement.bindString(5,cat);
         statement.bindString(6,bud);
         statement.bindString(7,desc);
+        statement.bindString( 8,link);
 
         statement.executeInsert();
     }
@@ -59,7 +60,7 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
     public void drop_table_from_Db()
     {
         database=getWritableDatabase();
-        query = "DROP TABLE IF EXISTS GIFT_DETAILS";
+        query = "DROP TABLE IF EXISTS GIFT";
 
         statement = database.compileStatement( query );
         statement.clearBindings();
@@ -68,7 +69,7 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
         //db.execSQL("DROP TABLE IF EXISTS YourTableName");
     }
 
-    public Cursor get_data_by_ID(int id)
+    public Cursor get_data_by_ID(int id,String name)
     {
         query="SELECT * FROM GIFT";
         database= getReadableDatabase();
@@ -76,7 +77,8 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
        // while(cursor.moveToNext())
          //       System.out.println("id" + id + " " + cursor.getInt( 0) );
         while(cursor.moveToNext())
-            if(cursor.getInt(0)==id+1) {
+           //if(cursor.getInt(0)==id) {
+             if(cursor.getString(1).equals(name)) {
                 System.out.println("id" + id + " " + cursor.getInt( 0) );
                 break;}
         return cursor;

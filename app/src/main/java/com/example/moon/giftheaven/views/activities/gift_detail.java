@@ -57,7 +57,7 @@ public class gift_detail extends AppCompatActivity {
          TextView price=(TextView) findViewById(R.id.text_d1_1);
         TextView description=(TextView) findViewById(R.id.text_d1_3);
 
-        Cursor cursor = main_activity.sqlLiteHelper.get_data_by_ID(pos);
+        Cursor cursor = main_activity.sqlLiteHelper.get_data_by_ID(pos,main_activity.name.get(pos));
 
         if(cursor!=null) {
             System.out.println(cursor.getInt( 0 ));
@@ -80,7 +80,8 @@ public class gift_detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1=new Intent(Intent.ACTION_VIEW);
-                intent1.setData(Uri.parse("https://www.giftsnideas.com/"));
+                //in case of array customListView.link_array[pos](shaid) na  chala to batana
+                intent1.setData(Uri.parse(CustomListView.link_array));
                 startActivity(intent1);
 
             }
