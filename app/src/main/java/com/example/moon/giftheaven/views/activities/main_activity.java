@@ -33,7 +33,7 @@ public class main_activity extends AppCompatActivity {
     TextView view_details ;
     Toolbar myToolbar;
     Cursor cursor;
-    String query;
+    public  static ArrayList<String> name;
     public static int index;
     public static SQLLiteHelper sqlLiteHelper;
     ArrayList<Gift> list;
@@ -82,22 +82,42 @@ public class main_activity extends AppCompatActivity {
         System.out.println("event " + FragmentEvent.event);
         System.out.println("category  " + FragmentCategory.category);
         System.out.println("event " + FragmentBudget.Budget);
+        int i=0;
+        name= new ArrayList<>(  );
         while(cursor.moveToNext())
         {
             System.out.println("event" + cursor.getString( 4 ));
             System.out.println("cat" + cursor.getString( 5 ));
             System.out.println("bud" + cursor.getString( 6 ));
             System.out.println("------------------------");
-            if(FragmentEvent.event.equals( cursor.getString( 4)) &&
-                    FragmentCategory.category.equals(cursor.getString( 5 ))
-                    && (Integer.parseInt(cursor.getString( 6 )) >= Integer.parseInt(FragmentBudget.Budget.get(0))
-                    && Integer.parseInt(cursor.getString( 6 )) <= (Integer.parseInt(FragmentBudget.Budget.get(1))))) {
-                int id = cursor.getInt( 0 );
-                String name = cursor.getString( 1 );
-                String price = cursor.getString( 2 );
-                int imgId = cursor.getInt( 3 );
-                list.add(new Gift(name,price,id,imgId));
+            if(FragmentBudget.Budget.size()==2) {
+                if (FragmentEvent.event.equals( cursor.getString( 4 ) ) &&
+                        FragmentCategory.category.equals( cursor.getString( 5 ) )
+                        && (Integer.parseInt( cursor.getString( 6 ) ) >= Integer.parseInt( FragmentBudget.Budget.get( 0 ) )
+                        && Integer.parseInt( cursor.getString( 6 ) ) <= (Integer.parseInt( FragmentBudget.Budget.get( 1 ) )))) {
+                    int id = cursor.getInt( 0 );
+                    index = id;
+                    name.add( cursor.getString( 1 ) );
+                    String price = cursor.getString( 2 );
+                    int imgId = cursor.getInt( 3 );
+                    list.add( new Gift( name.get( i ), price, id, imgId ) );
+                    i++;
+                }
             }
+            else if(FragmentBudget.Budget.size()== 1) {
+                if (FragmentEvent.event.equals( cursor.getString( 4 ) ) &&
+                        FragmentCategory.category.equals( cursor.getString( 5 ) )
+                        && (Integer.parseInt( cursor.getString( 6 ) ) >= Integer.parseInt( FragmentBudget.Budget.get( 0 )))) {
+                    int id = cursor.getInt( 0 );
+                    index = id;
+                    name.add( cursor.getString( 1 ) );
+                    String price = cursor.getString( 2 );
+                    int imgId = cursor.getInt( 3 );
+                    list.add( new Gift( name.get( i ), price, id, imgId ) );
+                    i++;
+                }
+            }
+
           //  Toast.makeText(this,cursor.getString(4) + "" +cursor.getString(5)+""+cursor.getString(6)+"" + cursor.getString(7),Toast.LENGTH_LONG);
 
 

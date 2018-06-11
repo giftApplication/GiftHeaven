@@ -182,8 +182,8 @@ public class after_login_activity extends AppCompatActivity {
         }
         if(id==R.id.rate)
         {
-            Intent intent=new Intent(this,SmileyRating.class);
-           startActivity(intent);
+            //Intent intent=new Intent(this,SmileyRating.class);
+           //startActivity(intent);
 
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market:// details?id=" + getPackageName())));
