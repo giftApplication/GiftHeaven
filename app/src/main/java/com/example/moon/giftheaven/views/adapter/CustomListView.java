@@ -168,7 +168,7 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
 
         view_holer.pricetxt.setText(gift.getPrice());
         //System.out.println("gift price" + gift.getPrice());
-        view_holer.nametxt.setText(gift.getName());
+        view_holer.nametxt.setText("Rs. " + gift.getName());
         view_holer.link.setOnClickListener(this);
         view_holer.img.setImageDrawable( gift.getImage() );
         /*view_holer.nametxt.setText(gift_names[pos]);

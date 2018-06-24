@@ -7,15 +7,27 @@ import android.graphics.drawable.Drawable;
  */
 
 public class Gift {
-    String Name, Price;
+    String Name;
+    String Price;
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    String link;
     int Id;
     Drawable img;
 
-    public Gift(String name, String price, int id, Drawable image) {
+    public Gift(String name, String price, int id, Drawable image, String link1) {
         Name = name;
         Price = price;
         Id = id;
         img = image;
+        link= link1;
     }
 
     public String getName() {

@@ -46,6 +46,7 @@ public class main_activity extends AppCompatActivity {
     public  static ArrayList<String> name;
     public static int index;
     public static SQLLiteHelper sqlLiteHelper;
+    public static ArrayList<String> link_ = new ArrayList<>(  );
     ArrayList<Gift> list;
     Gift_to_DB add_gifts;
     CustomListView customListView;
@@ -163,7 +164,8 @@ public class main_activity extends AppCompatActivity {
                     String price = cursor.getString( 2 );
                     final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
                     Drawable image = getResources().getDrawable(resourceId);
-                    list.add( new Gift( name.get( i ), price, id, image ) );
+                    list.add( new Gift( name.get( i ), price, id, image,link.get( i ) ) );
+                    link_.add(link.get( i ));
                     i++;
                 }
             }
@@ -177,7 +179,8 @@ public class main_activity extends AppCompatActivity {
                     String price = cursor.getString( 2 );
                     final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
                     Drawable image = getResources().getDrawable(resourceId);
-                    list.add( new Gift( name.get( i ), price, id, image ) );
+                    list.add( new Gift( name.get( i ), price, id, image, link.get(i) ) );
+                    link_.add(link.get( i ));
                     i++;
                 }
             }

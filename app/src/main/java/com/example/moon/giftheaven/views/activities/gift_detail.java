@@ -28,6 +28,8 @@ import com.example.moon.giftheaven.views.adapter.CustomListView;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import static com.example.moon.giftheaven.views.activities.main_activity.link_;
+
 
 public class gift_detail extends AppCompatActivity {
     int pos;
@@ -78,7 +80,7 @@ public class gift_detail extends AppCompatActivity {
          TextView price=(TextView) findViewById(R.id.text_d1_1);
         TextView description=(TextView) findViewById(R.id.text_d1_3);
 
-        Cursor cursor = main_activity.sqlLiteHelper.get_data_by_ID(pos,main_activity.name.get(pos));
+        final Cursor cursor = main_activity.sqlLiteHelper.get_data_by_ID(pos,main_activity.name.get(pos));
 
         if(cursor!=null) {
             System.out.println(cursor.getInt( 0 ));
@@ -96,7 +98,7 @@ public class gift_detail extends AppCompatActivity {
           //  }
         }
 
-        cursor.close();
+
 
         Button btn_gift=(Button) findViewById(R.id.btn_shop);
 
@@ -104,8 +106,10 @@ public class gift_detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1=new Intent(Intent.ACTION_VIEW);
-                //in case of array customListView.link_array[pos](shaid) na  chala to batana
-                intent1.setData(Uri.parse(CustomListView.link_array));
+
+               intent1.setData( Uri.parse( cursor.getString( 8 ) ));
+                //  intent1.setData(Uri.parse(CustomListView.link_array));
+                cursor.close();
                 startActivity(intent1);
 
             }
