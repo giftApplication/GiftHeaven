@@ -20,8 +20,7 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
         super(context, name, factory, version);
     }
 
-    public void queryData(String  sql)
-    {
+    public void queryData(String  sql) {
             database = getWritableDatabase();
             database.execSQL(sql);
     }

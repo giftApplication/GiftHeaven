@@ -95,7 +95,7 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
     public static String[] category_array={"Kids","Kids","Kids","Kids","Male","Male","Female","Female","Male","Female","Male"
             ,"Female","Female","Male","Male","Kids","Kids","Female","Female","Male","Female","Male","Female","Male","Male","Male","Male","Female","Female"};
     public static String[] budget_array={"1499","652","1599","980","1099","1499","1530","506","720","750","599","2800","2735","2150",
-            "2920","2732","2599","999","805","1100","1399","1432","1470","501","599","2499","2500","","2284"};
+            "2920","2732","2599","999","805","1100","1399","1432","1470","501","599","2499","2500","650","2284"};
 
     //farah iski array bana laina jo jo gift hai na site pai open kar kai uska url yahan paste karti jao
    public  static String link_array ="https://www.giftsnideas.com";

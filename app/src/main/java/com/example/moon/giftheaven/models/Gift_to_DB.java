@@ -41,7 +41,7 @@ public class Gift_to_DB {
         byte[] img=bos.toByteArray();*/
 
         //insert_into_DB();
-        //delete_from_DB();
+        delete_from_DB();
         //drop_table();
         Cursor cur =main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
         if(!(cur.moveToNext()) || cur.equals(null) ) insert_into_DB();
