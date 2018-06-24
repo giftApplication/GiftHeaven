@@ -13,6 +13,7 @@ import com.example.moon.giftheaven.views.fragments.FragmentEvent;
  */
 public class event_category_budget extends FragmentPagerAdapter {
     int fragments= 3;
+    public static int pos;
     public event_category_budget(FragmentManager fm) {
         super(fm);
     }

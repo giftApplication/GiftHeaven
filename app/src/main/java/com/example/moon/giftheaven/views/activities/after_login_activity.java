@@ -80,7 +80,7 @@ public class after_login_activity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                System.out.println("previtem" + prevItem);
+                //System.out.println("previtem" + prevItem);
                 if (prevItem != null) {
                     prevItem.setChecked(false);
                 } else {
@@ -245,11 +245,18 @@ public class after_login_activity extends AppCompatActivity {
 
         }
         if (id == R.id.logout) {
+            finish();
             Intent intent = new Intent(this, Activity1.class);
             startActivity(intent);
 
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+
+
     }
 
 }

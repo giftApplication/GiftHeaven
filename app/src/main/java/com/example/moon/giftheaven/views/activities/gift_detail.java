@@ -3,8 +3,10 @@ package com.example.moon.giftheaven.views.activities;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +21,11 @@ import android.widget.Toast;
 
 import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.models.Gift;
+import com.example.moon.giftheaven.models.GiftsData;
+import com.example.moon.giftheaven.models.parse_json;
 import com.example.moon.giftheaven.views.adapter.CustomListView;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 
@@ -29,7 +34,10 @@ public class gift_detail extends AppCompatActivity {
     Dialog dialogf;
     Dialog dialogr;
 
+
     Toolbar myToolbar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +47,8 @@ public class gift_detail extends AppCompatActivity {
 
         dialogf = new Dialog(this);
         dialogr = new Dialog(this);
+
+
 
         myToolbar = findViewById(R.id.mytoolbar);
         myToolbar.setTitle("");
@@ -73,13 +83,16 @@ public class gift_detail extends AppCompatActivity {
         if(cursor!=null) {
             System.out.println(cursor.getInt( 0 ));
           //  if(cursor.moveToFirst()) {
-                img.setImageResource(cursor.getInt(3));
+               // img.setImageResource(cursor.getInt(3));
                 //cursor.get
-                Toast.makeText(this,"position is " + pos,Toast.LENGTH_LONG);
+            final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
+            Drawable image = getResources().getDrawable(resourceId);
+            img.setImageDrawable( image );
+
                 name.setText("Name:   " + cursor.getString(1));
-                price.setText("Price:   " + cursor.getString(2));
+                price.setText("Price:  Rs. " + cursor.getString(2));
                 description.setText(cursor.getString( 7) );
-                Toast.makeText(this, cursor.getInt(1)+cursor.getInt(2)+cursor.getInt(3),Toast.LENGTH_LONG);
+
           //  }
         }
 

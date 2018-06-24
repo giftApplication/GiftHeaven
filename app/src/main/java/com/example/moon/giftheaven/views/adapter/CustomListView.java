@@ -3,6 +3,8 @@ package com.example.moon.giftheaven.views.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,12 @@ import android.widget.TextView;
 
 import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.models.Gift;
+import com.example.moon.giftheaven.models.GiftsData;
+import com.example.moon.giftheaven.models.parse_json;
 import com.example.moon.giftheaven.views.activities.gift_detail;
 import com.example.moon.giftheaven.views.activities.main_activity;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -102,6 +107,11 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
 
 
   //================================================================================================================
+    //parse//code
+
+
+
+    //===============================================================================================
     public CustomListView(Context ctx) {
         this.c = ctx;
     }
@@ -154,14 +164,13 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
 
 
         //set data
-
         gift = giftlist.get(pos);
 
         view_holer.pricetxt.setText(gift.getPrice());
         //System.out.println("gift price" + gift.getPrice());
         view_holer.nametxt.setText(gift.getName());
         view_holer.link.setOnClickListener(this);
-        view_holer.img.setImageResource(gift.getImage());
+        view_holer.img.setImageDrawable( gift.getImage() );
         /*view_holer.nametxt.setText(gift_names[pos]);
         view_holer.pricetxt.setText(desc[pos]);
         view_holer.link.setOnClickListener(this);

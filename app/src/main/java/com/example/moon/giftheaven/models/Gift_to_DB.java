@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
 import com.example.moon.giftheaven.R;
@@ -16,6 +17,15 @@ import com.example.moon.giftheaven.views.fragments.FragmentEvent;
 import java.io.ByteArrayOutputStream;
 
 import static com.example.moon.giftheaven.R.drawable.charlie_red;
+
+import static com.example.moon.giftheaven.views.activities.main_activity.bud;
+import static com.example.moon.giftheaven.views.activities.main_activity.cat;
+import static com.example.moon.giftheaven.views.activities.main_activity.descrip;
+import static com.example.moon.giftheaven.views.activities.main_activity.eve;
+import static com.example.moon.giftheaven.views.activities.main_activity.img_id;
+import static com.example.moon.giftheaven.views.activities.main_activity.link;
+import static com.example.moon.giftheaven.views.activities.main_activity.name_;
+import static com.example.moon.giftheaven.views.activities.main_activity.price;
 import static com.example.moon.giftheaven.views.activities.main_activity.sqlLiteHelper;
 import static com.example.moon.giftheaven.views.adapter.CustomListView.desc;
 import static com.example.moon.giftheaven.views.adapter.CustomListView.gift_names;
@@ -41,8 +51,8 @@ public class Gift_to_DB {
         byte[] img=bos.toByteArray();*/
 
         //insert_into_DB();
-        delete_from_DB();
-        //drop_table();
+       // delete_from_DB();
+       // drop_table();
         Cursor cur =main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
         if(!(cur.moveToNext()) || cur.equals(null) ) insert_into_DB();
     }
@@ -53,8 +63,13 @@ public class Gift_to_DB {
 
     void insert_into_DB() {
         int len = gift_names.length-1;
-        while(len>=0) {
-            sqlLiteHelper.insertData(gift_names[len], desc[len], imgid[len], CustomListView.description[len], CustomListView.events_array[len],CustomListView.category_array[len], CustomListView.budget_array[len],CustomListView.link_array);
+        int len1 = cat.size()-1;
+        System.out.println("len1" + len1);
+
+        while(len1>=0) {
+           // sqlLiteHelper.insertData(gift_names[len], desc[len], imgid[len], CustomListView.description[len], CustomListView.events_array[len],CustomListView.category_array[len], CustomListView.budget_array[len],CustomListView.link_array);
+            sqlLiteHelper.insertData( name_.get( len ), price.get( len ), img_id.get(len), descrip.get( len ), eve.get( len ), cat.get( len ), bud.get( len ),link.get(len));
+
             len--;
         }
     }

@@ -5,6 +5,7 @@ package com.example.moon.giftheaven.views.fragments;
  */
 
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,9 +30,13 @@ import static java.lang.Thread.sleep;
 
 public class FragmentEvent extends Fragment implements AdapterView.OnItemClickListener {
 
-    private list_view_adapter my_adapter;
+    public list_view_adapter my_adapter;
     public static StateProgressBar p_bar;
     public static  String event;
+    public static int pos;
+    public static  String[] category_names;
+    public static int[] imges_names;
+
     String[] descriptionData = {"Events", "Category", "Budget"};
 
     String[] events_name;
@@ -73,7 +78,40 @@ public class FragmentEvent extends Fragment implements AdapterView.OnItemClickLi
         p_bar.checkStateCompleted(true);
         //p_bar.setStateDescriptionTypeface("cursive");
         event = (String) adapterView.getItemAtPosition(i);
+        System.out.println("Event" + event);
+      /*  if(event.equals( "Wedding" ) || event.equals( "Engagement" )) {
+            System.out.println("kkia_hai in event" + kia_hai);
+            kia_hai = 0;
+        }
+        else
+            kia_hai=1;*/
+       String[] category_name= getResources().getStringArray(R.array.Category);
+       String[] cat = getResources().getStringArray(R.array.Cat);
+        pos=i;
+      if(i==2 || i==3)
+      {
+        //  category_names[0]="Male"; category_names[1]="Female";
+         //imges_names[0]= R.drawable.o; imges_names[1]=R.drawable.tt;
+            pos=i;
+         //System.out.println("cat_name" + category_names[0] + category_names[1]);
+          FragmentCategory fragment = new FragmentCategory();
+          final Bundle bundle = new Bundle();
+          bundle.putStringArray("array", cat);
+          fragment.setArguments(bundle);
+      }
+      else if(i==0 || i==1)
+      {
+       //   category_names[0]="Male"; category_names[1]="Female"; category_names[2]="Kids";
+        //  imges_names[0]= R.drawable.o; imges_names[1]=R.drawable.tt; imges_names[2]=R.drawable.t;
+         //s System.out.println("cat_name" + category_names[0] + category_names[1]);
+          FragmentCategory fragment = new FragmentCategory();
+          final Bundle bundle = new Bundle();
+          bundle.putStringArray("array", category_name);
+          fragment.setArguments(bundle);
+      }
+
         check= 1;
+       // Intent i =
         pager1.setCurrentItem(1);
 
 

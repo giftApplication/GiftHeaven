@@ -25,7 +25,7 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
             database.execSQL(sql);
     }
 
-    public void insertData(String name, String price, int image, String desc, String event, String cat, String bud, String link)
+    public void insertData(String name, String price, String image, String desc, String event, String cat, String bud, String link)
     {
         database = getWritableDatabase();
         query= "INSERT INTO GIFT VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -35,7 +35,7 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
 
         statement.bindString(1,name);
         statement.bindString(2,price);
-        statement.bindLong(3,image);
+        statement.bindString(3,image);
         statement.bindString(4,event);
         statement.bindString(5,cat);
         statement.bindString(6,bud);

@@ -17,6 +17,7 @@ import static com.example.moon.giftheaven.views.activities.after_login_activity.
 import static com.example.moon.giftheaven.views.activities.after_login_activity.check;
 
 import static com.example.moon.giftheaven.views.fragments.FragmentEvent.p_bar;
+import static com.example.moon.giftheaven.views.fragments.FragmentEvent.pos;
 
 /**
  * Created by Asad on 6/6/2018.
@@ -27,9 +28,13 @@ public class FragmentCategory extends Fragment implements AdapterView.OnItemClic
 
     private list_view_adapter my_adapter;
     //ProgressBar p2;
+    String[] data1 ={"Male", "Female"};
+    int[] imgs1={R.drawable.o,R.drawable.tt};
     public static  String category;
-    String[] category_name;
-    String[] descriptionData = {"Events", "Category", "Budget"};
+    String[] category_name_1;
+    String[] descriptionData={"Events","Category", "Budget"};
+    String[] description;
+
     ListView list;
     int[] imgs={R.drawable.o,R.drawable.t,R.drawable.tt};
     public FragmentCategory() {
@@ -40,19 +45,28 @@ public class FragmentCategory extends Fragment implements AdapterView.OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        category_name= getResources().getStringArray(R.array.Category);
+
 
         View root = inflater.inflate(R.layout.fragment_fragment_category, container, false);
         getActivity().setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         list=(ListView)root.findViewById(R.id.list_1);
+        if(FragmentEvent.pos==2 || FragmentEvent.pos==3) {
+             description = new String[]{"Male", "Female"};
+        }
+        else if(FragmentEvent.pos==0 || FragmentEvent.pos==1){
+            description = new String[]{"Male", "Female" ,"Kids"};
+        }
 
-        my_adapter = new list_view_adapter(getActivity(),category_name,imgs);
+        my_adapter= new list_view_adapter( getActivity(),description,imgs);
 
         p_bar = (StateProgressBar) root.findViewById(R.id.p_bar);
         p_bar.setStateDescriptionData(descriptionData);
 
+
         list.setAdapter(my_adapter);
+
+
         list.setOnItemClickListener(this);
         // Inflate the layout for this fragment
         return root;
@@ -62,6 +76,7 @@ public class FragmentCategory extends Fragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+       // System.out.println("kia_ha " + kia_hai + "" + category_name_1);
         p_bar.checkStateCompleted(true);
         category= (String)adapterView.getItemAtPosition(i);
         p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);

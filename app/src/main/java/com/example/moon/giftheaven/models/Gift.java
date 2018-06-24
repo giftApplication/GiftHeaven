@@ -1,5 +1,7 @@
 package com.example.moon.giftheaven.models;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by HP on 6/9/2018.
  */
@@ -7,12 +9,13 @@ package com.example.moon.giftheaven.models;
 public class Gift {
     String Name, Price;
     int Id;
+    Drawable img;
 
-    public Gift(String name, String price, int id, int image) {
+    public Gift(String name, String price, int id, Drawable image) {
         Name = name;
         Price = price;
         Id = id;
-        Image = image;
+        img = image;
     }
 
     public String getName() {
@@ -39,13 +42,13 @@ public class Gift {
         Id = id;
     }
 
-    public int getImage() {
-        return Image;
+    public Drawable getImage() {
+        return img;
     }
 
-    public void setImage(int image) {
-        Image = image;
+    public void setImage(Drawable image) {
+        img = image;
     }
 
-    int Image;
+
 }
