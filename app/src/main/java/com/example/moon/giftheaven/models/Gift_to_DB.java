@@ -24,12 +24,10 @@ import static com.example.moon.giftheaven.views.activities.main_activity.descrip
 import static com.example.moon.giftheaven.views.activities.main_activity.eve;
 import static com.example.moon.giftheaven.views.activities.main_activity.img_id;
 import static com.example.moon.giftheaven.views.activities.main_activity.link;
+import static com.example.moon.giftheaven.views.activities.main_activity.name;
 import static com.example.moon.giftheaven.views.activities.main_activity.name_;
 import static com.example.moon.giftheaven.views.activities.main_activity.price;
 import static com.example.moon.giftheaven.views.activities.main_activity.sqlLiteHelper;
-import static com.example.moon.giftheaven.views.adapter.CustomListView.desc;
-import static com.example.moon.giftheaven.views.adapter.CustomListView.gift_names;
-import static com.example.moon.giftheaven.views.adapter.CustomListView.imgid;
 
 /**
  * Created by HP on 6/9/2018.
@@ -50,9 +48,10 @@ public class Gift_to_DB {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
         byte[] img=bos.toByteArray();*/
 
-        //insert_into_DB();
+//      //insert_into_DB();
        // delete_from_DB();
-       // drop_table();
+        //insert_into_DB();
+        //drop_table();
         Cursor cur =main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
         if(!(cur.moveToNext()) || cur.equals(null) ) insert_into_DB();
     }
@@ -62,11 +61,17 @@ public class Gift_to_DB {
     }
 
     void insert_into_DB() {
-        int len = gift_names.length-1;
-        int len1 = cat.size()-1;
-        System.out.println("len1" + len1);
+      // int len = gift_names.length-1;
+        int len = cat.size()-1;
+       /* System.out.println("len1" + len);
+        System.out.println("name" + name_.size());
+        System.out.println("name" + name_.size());
+        System.out.println("price" + price.size());
+        System.out.println("img_id" + img_id.size());
+        System.out.println("descrip" + descrip.size());*/
+        System.out.println("Inside Insert in gift to DB");
 
-        while(len1>=0) {
+        while(len>=0) {
            // sqlLiteHelper.insertData(gift_names[len], desc[len], imgid[len], CustomListView.description[len], CustomListView.events_array[len],CustomListView.category_array[len], CustomListView.budget_array[len],CustomListView.link_array);
             sqlLiteHelper.insertData( name_.get( len ), price.get( len ), img_id.get(len), descrip.get( len ), eve.get( len ), cat.get( len ), bud.get( len ),link.get(len));
 

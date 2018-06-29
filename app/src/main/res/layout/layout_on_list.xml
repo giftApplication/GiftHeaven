@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="115dp"
         android:id="@+id/mylayout"
-        android:layout_margin="0dp"
+        android:background="@drawable/btn_bg"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="7dp"
         android:orientation="horizontal"
-        android:background="@drawable/btn_bg">
+        >
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="85dp"
             android:id="@+id/my_inner_layout"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal"
             android:background="@drawable/btn_bg3">
 
         <ImageView
-            android:layout_width="120dp"
-            android:padding="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="100dp"
+            android:padding="8dp"
+            android:layout_marginLeft="0dp"
             android:id="@+id/icon"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:src="@drawable/birthday"
 
             />
@@ -45,12 +51,11 @@
             <TextView
                 android:id="@+id/text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textColor="@color/color14"
                 android:textSize="15dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginLeft="23dp"
-
+                android:layout_marginLeft="20dp"
                 android:fontFamily="serif"
                 android:textStyle="normal"
                 />

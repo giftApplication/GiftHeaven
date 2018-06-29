@@ -33,9 +33,6 @@ import com.example.moon.giftheaven.views.fragments.FragmentEvent;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import static com.example.moon.giftheaven.views.adapter.CustomListView.desc;
-import static com.example.moon.giftheaven.views.adapter.CustomListView.gift_names;
-import static com.example.moon.giftheaven.views.adapter.CustomListView.imgid;
 
 
 public class main_activity extends AppCompatActivity {
@@ -90,6 +87,9 @@ public class main_activity extends AppCompatActivity {
 
         System.out.println(gifts_array.size());
 
+        cat.clear(); eve.clear();bud.clear(); name_.clear(); descrip.clear();link_.clear(); img_id.clear();
+        price.clear(); link.clear();
+      //  gifts_array.clear();
         for(int i=0;i<gifts_array.size();i++) {
             cat.add( gifts_array.get( i ).getCategory() );
             eve.add( gifts_array.get( i ).getEvent() );
@@ -99,6 +99,7 @@ public class main_activity extends AppCompatActivity {
             descrip.add(gifts_array.get( i ).getDescription());
             img_id.add(gifts_array.get(i).getImg());
             link.add(gifts_array.get( i ).getLink());
+
         }
 
         for(int i=0;i<gifts_array.size();i++) {
@@ -107,6 +108,9 @@ public class main_activity extends AppCompatActivity {
             System.out.println( link.get( i ));
 
         }
+        System.out.println( cat.size() + " +" + eve.size() +" " +  bud.size());
+        System.out.println( name_.size() + " +" + price.size() +" " +  descrip.size());
+        System.out.println( link.size());
         //==========================================================
 
         sqlLiteHelper = new SQLLiteHelper(this,"GiftDB.sqlite",null,1);
@@ -139,8 +143,8 @@ public class main_activity extends AppCompatActivity {
         lst.setAdapter(customListView);
 
         // get data from DB
-
-         cursor = main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
+//        cursor.close();
+        cursor = main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
         list.clear();
         System.out.println("event " + FragmentEvent.event);
         System.out.println("category  " + FragmentCategory.category);
@@ -149,9 +153,10 @@ public class main_activity extends AppCompatActivity {
         name= new ArrayList<>(  );
         while(cursor.moveToNext())
         {
-            System.out.println("event" + cursor.getString( 4 ));
-            System.out.println("cat" + cursor.getString( 5 ));
-            System.out.println("bud" + cursor.getString( 6 ));
+            System.out.print("event" + cursor.getString( 4 ));
+            System.out.print("cat"  + cursor.getString( 5 ));
+            System.out.print("bud" + cursor.getString( 6 ));
+            System.out.println("res_id in main_activity_outside_loop=====" + cursor.getString( 3));
             System.out.println("------------------------");
             if(FragmentBudget.Budget.size()==2) {
                 if (FragmentEvent.event.equals( cursor.getString( 4 ) ) &&
@@ -162,6 +167,7 @@ public class main_activity extends AppCompatActivity {
                     index = id;
                     name.add( cursor.getString( 1 ) );
                     String price = cursor.getString( 2 );
+                   // System.out.println("res_id in main_activity=====" + cursor.getString( 3));
                     final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
                     Drawable image = getResources().getDrawable(resourceId);
                     list.add( new Gift( name.get( i ), price, id, image,link.get( i ) ) );

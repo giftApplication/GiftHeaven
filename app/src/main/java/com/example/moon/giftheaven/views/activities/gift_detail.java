@@ -83,8 +83,14 @@ public class gift_detail extends AppCompatActivity {
         final Cursor cursor = main_activity.sqlLiteHelper.get_data_by_ID(pos,main_activity.name.get(pos));
 
         if(cursor!=null) {
-            System.out.println(cursor.getInt( 0 ));
-          //  if(cursor.moveToFirst()) {
+            System.out.println("ID" + cursor.getInt( 0 ));
+            System.out.println("event in gift_detail" + cursor.getInt( 4 ));
+            System.out.println("cat in gift_detail" + cursor.getInt( 5 ));
+
+            System.out.println("bud in gift_detail" + cursor.getInt( 6));
+            System.out.println("img_is in  gift_detail" + cursor.getInt( 3));
+
+            //  if(cursor.moveToFirst()) {
                // img.setImageResource(cursor.getInt(3));
                 //cursor.get
             final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());

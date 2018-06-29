@@ -25,7 +25,7 @@ public class parse_json {
         String json1 = new String(data, "UTF-8");
 
         JSONObject obj = new JSONObject(json1);
-        gifts__array = new ArrayList<GiftsData>(5);
+        gifts__array = new ArrayList<GiftsData>();
 
         JSONArray arr = obj.getJSONArray("details");
         System.out.println("arr =" + arr.length());
@@ -51,7 +51,7 @@ public class parse_json {
             //System.out.println(gifts__array.size());
 
         }
-        System.out.println("size = " + gifts__array.size());
+       // System.out.println("size = " + gifts__array.size());
         return gifts__array;
     }
 
