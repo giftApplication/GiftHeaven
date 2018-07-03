@@ -39,6 +39,7 @@ android:id="@+id/frag_2">
         android:id="@+id/pager1"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_marginBottom="59sp"
         />
 
 

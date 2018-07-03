@@ -155,7 +155,7 @@
 
             <Button
                 android:id="@+id/reg_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linlay1"
                 android:layout_centerHorizontal="true"

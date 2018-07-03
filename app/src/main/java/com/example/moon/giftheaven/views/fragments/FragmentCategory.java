@@ -32,7 +32,7 @@ public class FragmentCategory extends Fragment implements AdapterView.OnItemClic
     int[] imgs1={R.drawable.o,R.drawable.tt};
     public static  String category;
     String[] category_name_1;
-    String[] descriptionData={"Events","Category", "Budget"};
+    String[] descriptionData={"Events", "Budget"};
     String[] description;
 
     ListView list;

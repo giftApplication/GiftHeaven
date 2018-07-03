@@ -34,7 +34,7 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
 
     private list_view_adapter my_adapter;
     String[] budget_name;
-    String[] descriptionData = {"Events", "Category", "Budget"};
+    String[] descriptionData = {"Events","Budget"};
     Context context;
     public static ArrayList<String> Budget ;
     String bud;
@@ -80,7 +80,7 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
         Budget = new ArrayList<>();
         switch(i) {
             case 0:
-                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 p_bar.checkStateCompleted(true);
 
                 bud = (String) adapterView.getItemAtPosition(i);
@@ -100,7 +100,7 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
                 btn_no.setOnClickListener(this);
                 break;
             case 1:
-                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 p_bar.checkStateCompleted(true);
 
                 bud = (String) adapterView.getItemAtPosition(i);
@@ -118,7 +118,7 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
                 btn_no1.setOnClickListener(this);
                 break;
             case 2:
-                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 p_bar.checkStateCompleted(true);
 
                 bud = (String) adapterView.getItemAtPosition(i);
@@ -143,7 +143,7 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
                 Button btn_ok = dialog1.findViewById(R.id.btn_ok);
 
                 btn_ok.setOnClickListener(this);
-                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 break;
 
 
@@ -177,7 +177,7 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
                 btn_no.setOnClickListener(this);
                 break;
             case R.id.btn_no:
-                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 dialog.dismiss();
                 dialog1.dismiss();
                 break;

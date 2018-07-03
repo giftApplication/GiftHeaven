@@ -37,7 +37,7 @@ public class FragmentEvent extends Fragment implements AdapterView.OnItemClickLi
     public static  String[] category_names;
     public static int[] imges_names;
 
-    String[] descriptionData = {"Events", "Category", "Budget"};
+    String[] descriptionData = {"Events", "Budget"};
 
     String[] events_name;
     ListView list;

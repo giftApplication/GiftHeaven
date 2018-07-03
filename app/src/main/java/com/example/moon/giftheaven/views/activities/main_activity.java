@@ -24,6 +24,8 @@ import com.example.moon.giftheaven.models.Gift;
 import com.example.moon.giftheaven.models.Gift_to_DB;
 import com.example.moon.giftheaven.models.GiftsData;
 import com.example.moon.giftheaven.models.SQLLiteHelper;
+import com.example.moon.giftheaven.models.Wedding;
+import com.example.moon.giftheaven.models.Wedding_parse;
 import com.example.moon.giftheaven.models.parse_json;
 import com.example.moon.giftheaven.views.adapter.CustomListView;
 import com.example.moon.giftheaven.views.fragments.FragmentBudget;
@@ -44,7 +46,7 @@ public class main_activity extends AppCompatActivity {
     public static int index;
     public static SQLLiteHelper sqlLiteHelper;
     public static ArrayList<String> link_ = new ArrayList<>(  );
-    ArrayList<Gift> list;
+    ArrayList list;
     Gift_to_DB add_gifts;
     CustomListView customListView;
     Dialog dialogf;
@@ -53,8 +55,8 @@ public class main_activity extends AppCompatActivity {
     //=============================================================
     AssetManager assertManager;
     InputStream input;
-    ArrayList<GiftsData> gifts_array= new ArrayList<>();
-    parse_json obj = new parse_json();
+    ArrayList<Wedding> gifts_array= new ArrayList<>();
+    parse_json obj;
     public static ArrayList<String> cat = new ArrayList<>();
     public static  ArrayList<String> eve = new ArrayList<>();
     public static ArrayList<String> bud = new ArrayList<>();
@@ -64,6 +66,7 @@ public class main_activity extends AppCompatActivity {
     public static ArrayList<String> img_id = new ArrayList<>( );
     public static ArrayList<String> link = new ArrayList<>( );
 
+    String filename;
     //================================================================
 
 
@@ -76,11 +79,16 @@ public class main_activity extends AppCompatActivity {
         dialogf = new Dialog(this);
         dialogr = new Dialog(this);
 
+
         //==============================================================
         try {
             assertManager = getResources().getAssets();
-            input = assertManager.open("gifts.json");
-            gifts_array = obj.get_JSON(input);
+            if(FragmentEvent.event.equals( "Wedding" )) {
+                filename = "wedding_gifts.json";
+                obj= new Wedding_parse();
+            }
+            input = assertManager.open(filename);
+            gifts_array = obj.get_JSON_wedding(input);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,26 +99,21 @@ public class main_activity extends AppCompatActivity {
         price.clear(); link.clear();
       //  gifts_array.clear();
         for(int i=0;i<gifts_array.size();i++) {
-            cat.add( gifts_array.get( i ).getCategory() );
-            eve.add( gifts_array.get( i ).getEvent() );
-            bud.add(gifts_array.get( i ).getBudget());
-            name_.add(gifts_array.get( i ).getName());
-            price.add(gifts_array.get( i ).getPrice());
-            descrip.add(gifts_array.get( i ).getDescription());
-            img_id.add(gifts_array.get(i).getImg());
-            link.add(gifts_array.get( i ).getLink());
+          //  cat.add( gifts_array.get( i ).getCategory() );
+            if(FragmentEvent.event.equals( "Wedding" ))
+            {
+                eve.add(gifts_array.get(i).getEvent());
+                bud.add(gifts_array.get(i).getPrice());
+                name_.add(gifts_array.get( i ).getName());
+                price.add(gifts_array.get( i ).getPrice());
+                descrip.add(gifts_array.get( i ).getDescription());
+                img_id.add(gifts_array.get(i).getImg());
+                link.add(gifts_array.get( i ).getUrl());
+            }
+
 
         }
 
-        for(int i=0;i<gifts_array.size();i++) {
-            System.out.println( cat.get( i ) + " +" + eve.get(i) +" " +  bud.get(i) );
-            System.out.println( name_.get( i ) + " +" + price.get(i) +" " +  descrip.get(i));
-            System.out.println( link.get( i ));
-
-        }
-        System.out.println( cat.size() + " +" + eve.size() +" " +  bud.size());
-        System.out.println( name_.size() + " +" + price.size() +" " +  descrip.size());
-        System.out.println( link.size());
         //==========================================================
 
         sqlLiteHelper = new SQLLiteHelper(this,"GiftDB.sqlite",null,1);
@@ -138,54 +141,59 @@ public class main_activity extends AppCompatActivity {
         lst = (ListView) findViewById(R.id.list1);
         view_details=(TextView) findViewById(R.id.text_link);
 
-        list = new ArrayList<>();
-        customListView=new CustomListView(this,R.layout.layout,list);
-        lst.setAdapter(customListView);
+        list = new ArrayList<Wedding>();
+       // customListView=new CustomListView(this,list);
+        //lst.setAdapter(customListView);
 
         // get data from DB
 //        cursor.close();
         cursor = main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
         list.clear();
-        System.out.println("event " + FragmentEvent.event);
+       // System.out.println("event " + FragmentEvent.event);
         System.out.println("category  " + FragmentCategory.category);
         System.out.println("event " + FragmentBudget.Budget);
         int i=0;
         name= new ArrayList<>(  );
+      //  name.clear(); link_.clear();
         while(cursor.moveToNext())
         {
-            System.out.print("event" + cursor.getString( 4 ));
-            System.out.print("cat"  + cursor.getString( 5 ));
-            System.out.print("bud" + cursor.getString( 6 ));
-            System.out.println("res_id in main_activity_outside_loop=====" + cursor.getString( 3));
-            System.out.println("------------------------");
+                    System.out.println("------------------------");
             if(FragmentBudget.Budget.size()==2) {
-                if (FragmentEvent.event.equals( cursor.getString( 4 ) ) &&
-                        FragmentCategory.category.equals( cursor.getString( 5 ) )
-                        && (Integer.parseInt( cursor.getString( 6 ) ) >= Integer.parseInt( FragmentBudget.Budget.get( 0 ) )
-                        && Integer.parseInt( cursor.getString( 6 ) ) <= (Integer.parseInt( FragmentBudget.Budget.get( 1 ) )))) {
+                if (FragmentEvent.event.equals( cursor.getString( 4 ) )
+                        && (Integer.parseInt( cursor.getString( 5 ) ) >= Integer.parseInt( FragmentBudget.Budget.get( 0 ) )
+                        && Integer.parseInt( cursor.getString( 5 ) ) <= (Integer.parseInt( FragmentBudget.Budget.get( 1 ) )))) {
+                    System.out.print("event" + cursor.getString( 4 ));
+                    //   System.out.print("cat"  + cursor.getString( 5 ));
+                    System.out.print("bud" + cursor.getString( 5 ));
+
                     int id = cursor.getInt( 0 );
                     index = id;
                     name.add( cursor.getString( 1 ) );
                     String price = cursor.getString( 2 );
                    // System.out.println("res_id in main_activity=====" + cursor.getString( 3));
-                    final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
-                    Drawable image = getResources().getDrawable(resourceId);
-                    list.add( new Gift( name.get( i ), price, id, image,link.get( i ) ) );
+                   // final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
+                    //Drawable image = getResources().getDrawable(resourceId);
+                    String image = cursor.getString(  3);
+                    String description = cursor.getString( 4 );
+                    list.add( new Wedding( name.get( i ), price, id, image,link.get( i ) ,description) );
                     link_.add(link.get( i ));
                     i++;
                 }
             }
             else if(FragmentBudget.Budget.size()== 1) {
-                if (FragmentEvent.event.equals( cursor.getString( 4 ) ) &&
-                        FragmentCategory.category.equals( cursor.getString( 5 ) )
-                        && (Integer.parseInt( cursor.getString( 6 ) ) >= Integer.parseInt( FragmentBudget.Budget.get( 0 )))) {
+                if (FragmentEvent.event.equals( cursor.getString( 4 ) )
+                        && (Integer.parseInt( cursor.getString( 5 ) ) <= Integer.parseInt( FragmentBudget.Budget.get( 0 )))) {
                     int id = cursor.getInt( 0 );
                     index = id;
                     name.add( cursor.getString( 1 ) );
                     String price = cursor.getString( 2 );
-                    final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
-                    Drawable image = getResources().getDrawable(resourceId);
-                    list.add( new Gift( name.get( i ), price, id, image, link.get(i) ) );
+                    //final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
+                    //Drawable image = getResources().getDrawable(resourceId);
+                    String image = cursor.getString(  3);
+                    String description = cursor.getString( 6 );
+
+                    System.out.println("Description = -----" + description);
+                    list.add( new Wedding( name.get( i ), price, id, image, link.get(i) ,description ) );
                     link_.add(link.get( i ));
                     i++;
                 }
@@ -197,6 +205,9 @@ public class main_activity extends AppCompatActivity {
 
         }
         System.out.println("list size" + list.size());
+
+        customListView=new CustomListView(this,list);
+        lst.setAdapter(customListView);
         customListView.notifyDataSetChanged();
 
        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {

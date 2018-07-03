@@ -16,9 +16,11 @@ import android.widget.TextView;
 import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.models.Gift;
 import com.example.moon.giftheaven.models.GiftsData;
+import com.example.moon.giftheaven.models.Wedding;
 import com.example.moon.giftheaven.models.parse_json;
 import com.example.moon.giftheaven.views.activities.gift_detail;
 import com.example.moon.giftheaven.views.activities.main_activity;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -32,23 +34,20 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
 
     Context c;
     Gift gift;
-    ArrayList<Gift> giftlist = new ArrayList<>();
+    ArrayList giftlist;
 
     ///=========================================================================================================
-  //================================================================================================================
-    //parse//code
 
-
-
-    //===============================================================================================
     public CustomListView(Context ctx) {
         this.c = ctx;
     }
 
-    public CustomListView(Context c, int index, ArrayList<Gift> giftlist) {
+    public CustomListView(Context c, ArrayList<Wedding> giftlist) {
         this.c = c;
-       // this.index = index;
+        // this.index = index;
+        gift= new Wedding();
         this.giftlist = giftlist;
+        System.out.println("in constructor" + giftlist.size()  );
     }
 
     @Override
@@ -93,13 +92,16 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
 
 
         //set data
-        gift = giftlist.get(pos);
+        gift = (Wedding) giftlist.get(pos);
+
+        System.out.println("Acha============  batna zaea" + gift.getPrice());
 
         view_holer.pricetxt.setText("Rs. " + gift.getPrice());
         //System.out.println("gift price" + gift.getPrice());
         view_holer.nametxt.setText( gift.getName());
         view_holer.link.setOnClickListener(this);
-        view_holer.img.setImageDrawable( gift.getImage() );
+        Picasso.get().load(gift.getImage_url()).into(view_holer.img);
+       // view_holer.img.setImageDrawable( gift.getImage() );
         /*view_holer.nametxt.setText(gift_names[pos]);
         view_holer.pricetxt.setText(desc[pos]);
         view_holer.link.setOnClickListener(this);

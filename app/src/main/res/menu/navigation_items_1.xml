@@ -7,10 +7,6 @@
         android:icon="@drawable/event"
         android:title="@string/nav_event" />
     <item
-        android:id="@+id/nav_category"
-        android:icon="@drawable/m_f"
-        android:title="@string/nav_category" />
-    <item
         android:id="@+id/nav_budget"
         android:icon="@drawable/notepad"
         android:title="@string/nav_budget" />

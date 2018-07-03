@@ -25,8 +25,8 @@
             android:layout_marginTop="80dp"
             app:spb_animateToCurrentProgressState="true"
             app:spb_currentStateDescriptionColor="@color/color14"
-            app:spb_currentStateNumber="three"
-            app:spb_maxStateNumber="three"
+            app:spb_currentStateNumber="two"
+            app:spb_maxStateNumber="two"
             app:spb_stateBackgroundColor="@color/color2"
             app:spb_stateDescriptionColor="@color/color2"
             app:spb_stateForegroundColor="@color/color14" />

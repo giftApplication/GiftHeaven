@@ -6,9 +6,28 @@ import android.graphics.drawable.Drawable;
  * Created by HP on 6/9/2018.
  */
 
-public class Gift {
+public abstract class Gift {
     String Name;
     String Price;
+    String image_url;
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public String getDescrip() {
+        return descrip;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
+    }
+
+    String descrip;
 
     public String getLink() {
         return link;
@@ -21,6 +40,18 @@ public class Gift {
     String link;
     int Id;
     Drawable img;
+
+    public Gift(String name, String price, int id, String image, String link1,String description) {
+        Name = name;
+        Price = price;
+        Id = id;
+        image_url = image;
+        link= link1;
+        descrip=description;
+    }
+
+    public Gift() {
+    }
 
     public Gift(String name, String price, int id, Drawable image, String link1) {
         Name = name;
@@ -61,6 +92,9 @@ public class Gift {
     public void setImage(Drawable image) {
         img = image;
     }
+
+
+    public abstract void my_func();
 
 
 }

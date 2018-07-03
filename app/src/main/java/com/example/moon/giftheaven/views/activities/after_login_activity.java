@@ -116,7 +116,7 @@ public class after_login_activity extends AppCompatActivity {
                                 title = (String) adapter.getPageTitle(0);
                                 pager1.setCurrentItem(0);
                                 break;
-                            case R.id.nav_category:
+                          //  case R.id.nav_category:
                             case R.id.nav_budget:
                                 // main_nav.setItemTextColor(ColorStateList.valueOf(Color.GRAY));
                                 //main_nav.setItemIconTintList(ColorStateList.valueOf(Color.GRAY));
@@ -132,11 +132,11 @@ public class after_login_activity extends AppCompatActivity {
                                 title = (String) adapter.getPageTitle(0);
                                 pager1.setCurrentItem(0);
                                 break;
-                            case R.id.nav_category:
+                           // case R.id.nav_category:
                                 // frag = new Registor_Fragment();
-                                title = (String) adapter.getPageTitle(1);
-                                pager1.setCurrentItem(1);
-                                break;
+                             //   title = (String) adapter.getPageTitle(1);
+                               // pager1.setCurrentItem(1);
+                                //break;
                             case R.id.nav_budget:
                                 //main_nav.setItemTextColor(ColorStateList.valueOf(Color.GRAY));
                                 //main_nav.setItemIconTintList(ColorStateList.valueOf(Color.GRAY));
@@ -153,15 +153,15 @@ public class after_login_activity extends AppCompatActivity {
                                 title = (String) adapter.getPageTitle(0);
                                 pager1.setCurrentItem(0);
                                 break;
-                            case R.id.nav_category:
+                          //  case R.id.nav_category:
                                 // frag = new Registor_Fragment();
-                                title = (String) adapter.getPageTitle(1);
-                                pager1.setCurrentItem(1);
-                                break;
+                              //  title = (String) adapter.getPageTitle(1);
+                            //    pager1.setCurrentItem(1);
+                                //break;
                             case R.id.nav_budget:
                                 // frag = new Registor_Fragment();
                                 title = (String) adapter.getPageTitle(2);
-                                pager1.setCurrentItem(2);
+                                pager1.setCurrentItem(1);
                                 break;
 
                         }

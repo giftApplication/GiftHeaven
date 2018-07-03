@@ -39,8 +39,8 @@ public class Gift_to_DB {
 
 
     public Gift_to_DB() {
-        //DB created                            //0/                                    //  1                   //2                        //3                     //4                      //5                         //6                         //7                     //9
-        query = "CREATE TABLE IF NOT EXISTS GIFT(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR NOT NULL, Price  VARCHAR NOT NULL, Images INTEGER NOT NULL, Event VARCHAR NOT NULL, Category VARCHAR NOT NULL, Budget VARCHAR NOT NULL , Description VARCHAR NOT NULL, Link VARCHAR)";
+        //DB created                            //0/                                    //  1                   //2                        //3                     //4                      //5                         //6                         //7
+        query = "CREATE TABLE IF NOT EXISTS GIFT(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR NOT NULL, Price  VARCHAR NOT NULL, Images INTEGER NOT NULL, Event VARCHAR NOT NULL, Budget VARCHAR NOT NULL , Description VARCHAR NOT NULL, Link VARCHAR)";
         main_activity.sqlLiteHelper.queryData(query);
 
      /*   Bitmap bitmap= BitmapFactory.decodeResource(Resources.getSystem(),charlie_red);
@@ -49,9 +49,9 @@ public class Gift_to_DB {
         byte[] img=bos.toByteArray();*/
 
 //      //insert_into_DB();
-       // delete_from_DB();
+        delete_from_DB();
         //insert_into_DB();
-        //drop_table();
+       // drop_table();
         Cursor cur =main_activity.sqlLiteHelper.getData("SELECT * FROM GIFT");
         if(!(cur.moveToNext()) || cur.equals(null) ) insert_into_DB();
     }
@@ -62,19 +62,12 @@ public class Gift_to_DB {
 
     void insert_into_DB() {
       // int len = gift_names.length-1;
-        int len = cat.size()-1;
-       /* System.out.println("len1" + len);
-        System.out.println("name" + name_.size());
-        System.out.println("name" + name_.size());
-        System.out.println("price" + price.size());
-        System.out.println("img_id" + img_id.size());
-        System.out.println("descrip" + descrip.size());*/
+        int len = price.size()-1;
         System.out.println("Inside Insert in gift to DB");
 
         while(len>=0) {
            // sqlLiteHelper.insertData(gift_names[len], desc[len], imgid[len], CustomListView.description[len], CustomListView.events_array[len],CustomListView.category_array[len], CustomListView.budget_array[len],CustomListView.link_array);
-            sqlLiteHelper.insertData( name_.get( len ), price.get( len ), img_id.get(len), descrip.get( len ), eve.get( len ), cat.get( len ), bud.get( len ),link.get(len));
-
+            sqlLiteHelper.insertData( name_.get( len ), price.get( len ), img_id.get(len), descrip.get( len ), eve.get( len ), bud.get( len ),link.get(len));
             len--;
         }
     }

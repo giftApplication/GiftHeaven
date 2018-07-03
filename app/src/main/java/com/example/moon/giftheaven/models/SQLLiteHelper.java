@@ -25,10 +25,10 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
             database.execSQL(sql);
     }
 
-    public void insertData(String name, String price, String image, String desc, String event, String cat, String bud, String link)
+    public void insertData(String name, String price, String image, String desc, String event, String bud, String link)
     {
         database = getWritableDatabase();
-        query= "INSERT INTO GIFT VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?) ";
+        query= "INSERT INTO GIFT VALUES (NULL, ?, ?, ?, ?, ?, ?, ?) ";
 
         statement = database.compileStatement(query);
         statement.clearBindings();
@@ -37,10 +37,9 @@ public class SQLLiteHelper extends SQLiteOpenHelper{
         statement.bindString(2,price);
         statement.bindString(3,image);
         statement.bindString(4,event);
-        statement.bindString(5,cat);
-        statement.bindString(6,bud);
-        statement.bindString(7,desc);
-        statement.bindString( 8,link);
+        statement.bindString(5,bud);
+        statement.bindString(6,desc);
+        statement.bindString( 7,link);
 
         statement.executeInsert();
     }

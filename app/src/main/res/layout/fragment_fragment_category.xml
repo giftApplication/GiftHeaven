@@ -28,7 +28,7 @@
             app:spb_stateDescriptionColor="@color/color2"
             app:spb_currentStateNumber="two"
             app:spb_animateToCurrentProgressState="true"
-            app:spb_maxStateNumber="three"/>
+            app:spb_maxStateNumber="two"/>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -24,6 +24,7 @@ import com.example.moon.giftheaven.models.Gift;
 import com.example.moon.giftheaven.models.GiftsData;
 import com.example.moon.giftheaven.models.parse_json;
 import com.example.moon.giftheaven.views.adapter.CustomListView;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -90,16 +91,19 @@ public class gift_detail extends AppCompatActivity {
             System.out.println("bud in gift_detail" + cursor.getInt( 6));
             System.out.println("img_is in  gift_detail" + cursor.getInt( 3));
 
+            String image = cursor.getString(  3);
+
             //  if(cursor.moveToFirst()) {
                // img.setImageResource(cursor.getInt(3));
                 //cursor.get
-            final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
-            Drawable image = getResources().getDrawable(resourceId);
-            img.setImageDrawable( image );
+           // final int resourceId = getResources().getIdentifier(cursor.getString( 3 ), "drawable",getPackageName());
+            //Drawable image = getResources().getDrawable(resourceId);
+            //img.setImageDrawable( image );
+            Picasso.get().load(image).into(img);
 
                 name.setText("Name:   " + cursor.getString(1));
                 price.setText("Price:  Rs. " + cursor.getString(2));
-                description.setText(cursor.getString( 7) );
+                description.setText(cursor.getString( 6) );
 
           //  }
         }
