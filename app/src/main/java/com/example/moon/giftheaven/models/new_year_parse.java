@@ -1,6 +1,5 @@
 package com.example.moon.giftheaven.models;
 
-import com.example.moon.giftheaven.views.fragments.FragmentBudget;
 import com.example.moon.giftheaven.views.fragments.FragmentEvent;
 
 import org.json.JSONArray;
@@ -13,17 +12,12 @@ import java.util.ArrayList;
  * Created by HP on 7/4/2018.
  */
 
-public class Wedding_parse extends parse_json {
-
-    Wedding gifts_;
-    ArrayList<Wedding> gifts__array;
+public class new_year_parse extends parse_json{
+    new_year gifts_;
+    ArrayList<new_year> gifts__array;
     ArrayList<String> news = new ArrayList<>();
 
     public ArrayList<new_year> get_JSON_new_year(InputStream input)  throws Exception {
-      return null;
-    }
-
-    public ArrayList<Wedding> get_JSON_wedding(InputStream input)  throws Exception {
 
         int size = input.available();
         byte[] data = new byte[size];
@@ -33,13 +27,13 @@ public class Wedding_parse extends parse_json {
         String json1 = new String(data, "UTF-8");
 
         JSONObject obj = new JSONObject(json1);
-        gifts__array = new ArrayList<Wedding>();
+        gifts__array = new ArrayList<new_year>();
 
         JSONArray arr = obj.getJSONArray("details");
         System.out.println("arr =" + arr.length());
         for (int i = 0; i < arr.length(); i++) {
             JSONObject jsonObject = arr.getJSONObject(i);
-            gifts_ = new Wedding();
+            gifts_ = new new_year();
             // gifts_.no_of_records = (int) obj.get("totalRecords");
 
             // System.out.println(jsonObject);
@@ -49,7 +43,7 @@ public class Wedding_parse extends parse_json {
             gifts_.price = jsonObject.getString("price_on_detail");
             gifts_.description = jsonObject.getString("description");
             gifts_.event= FragmentEvent.event;
-            gifts_.budget= jsonObject.getString( "price" );
+            gifts_.budget= jsonObject.getString( "price_on_detail" );
 
             gifts__array.add(i, gifts_);
             //System.out.println(gifts__array.size());

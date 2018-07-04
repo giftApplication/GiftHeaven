@@ -26,6 +26,8 @@ import com.example.moon.giftheaven.models.GiftsData;
 import com.example.moon.giftheaven.models.SQLLiteHelper;
 import com.example.moon.giftheaven.models.Wedding;
 import com.example.moon.giftheaven.models.Wedding_parse;
+import com.example.moon.giftheaven.models.new_year;
+import com.example.moon.giftheaven.models.new_year_parse;
 import com.example.moon.giftheaven.models.parse_json;
 import com.example.moon.giftheaven.views.adapter.CustomListView;
 import com.example.moon.giftheaven.views.fragments.FragmentBudget;
@@ -55,7 +57,7 @@ public class main_activity extends AppCompatActivity {
     //=============================================================
     AssetManager assertManager;
     InputStream input;
-    ArrayList<Wedding> gifts_array= new ArrayList<>();
+    ArrayList<Wedding> gifts_array = new ArrayList<Wedding>(  );
     parse_json obj;
     public static ArrayList<String> cat = new ArrayList<>();
     public static  ArrayList<String> eve = new ArrayList<>();
@@ -85,10 +87,20 @@ public class main_activity extends AppCompatActivity {
             assertManager = getResources().getAssets();
             if(FragmentEvent.event.equals( "Wedding" )) {
                 filename = "wedding_gifts.json";
-                obj= new Wedding_parse();
+                obj= new parse_json();
+
+            }
+            else if(FragmentEvent.event.equals( "New Year" )) {
+                filename = "new_year_gifts.json";
+                obj= new parse_json();
+            }
+            else if(FragmentEvent.event.equals( "Birthday" )) {
+                filename = "birthday_gifts.json";
+                obj= new parse_json();
             }
             input = assertManager.open(filename);
             gifts_array = obj.get_JSON_wedding(input);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,6 +123,27 @@ public class main_activity extends AppCompatActivity {
                 link.add(gifts_array.get( i ).getUrl());
             }
 
+            else if(FragmentEvent.event.equals( "New Year" ))
+            {
+                eve.add(gifts_array.get(i).getEvent());
+                bud.add(gifts_array.get(i).getPrice());
+                name_.add(gifts_array.get( i ).getName());
+                price.add(gifts_array.get( i ).getPrice());
+                descrip.add(gifts_array.get( i ).getDescription());
+                img_id.add(gifts_array.get(i).getImg());
+                link.add(gifts_array.get( i ).getUrl());
+            }
+
+            else if(FragmentEvent.event.equals( "Birthday" ))
+            {
+                eve.add(gifts_array.get(i).getEvent());
+                bud.add(gifts_array.get(i).getPrice());
+                name_.add(gifts_array.get( i ).getName());
+                price.add(gifts_array.get( i ).getPrice());
+                descrip.add(gifts_array.get( i ).getDescription());
+                img_id.add(gifts_array.get(i).getImg());
+                link.add(gifts_array.get( i ).getUrl());
+            }
 
         }
 
@@ -182,7 +215,7 @@ public class main_activity extends AppCompatActivity {
             }
             else if(FragmentBudget.Budget.size()== 1) {
                 if (FragmentEvent.event.equals( cursor.getString( 4 ) )
-                        && (Integer.parseInt( cursor.getString( 5 ) ) <= Integer.parseInt( FragmentBudget.Budget.get( 0 )))) {
+                        && (Integer.parseInt( cursor.getString( 5 ) ) >= Integer.parseInt( FragmentBudget.Budget.get( 0 )))) {
                     int id = cursor.getInt( 0 );
                     index = id;
                     name.add( cursor.getString( 1 ) );

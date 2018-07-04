@@ -1,12 +1,10 @@
 package com.example.moon.giftheaven.models;
 
-import android.graphics.drawable.Drawable;
-
 /**
- * Created by HP on 7/2/2018.
+ * Created by HP on 7/4/2018.
  */
 
-public class Wedding extends Gift {
+public class new_year extends Gift {
     String description;
 
     public String getEvent() {
@@ -27,11 +25,14 @@ public class Wedding extends Gift {
 
     String event, budget;
 
-    public Wedding(String name, String price, int id, String image, String link1,String descr) {
-        super( name, price, id, image, link1 ,descr);
-        this.name= name; this.price=price; this.description= descr;
+    public new_year(String name, String price, int id, String image, String link1, String descr) {
+        super( name, price, id, image, link1, descr );
+        this.name = name;
+        this.price = price;
+        this.description = descr;
     }
-    public Wedding() {
+
+    public new_year() {
         super();
     }
 
@@ -67,8 +68,6 @@ public class Wedding extends Gift {
         this.price = price;
     }
 
-
-
     String img;
     String name;
     String url;
@@ -81,7 +80,5 @@ public class Wedding extends Gift {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
 
 }

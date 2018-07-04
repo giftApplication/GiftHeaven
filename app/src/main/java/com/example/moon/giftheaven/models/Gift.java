@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
  * Created by HP on 6/9/2018.
  */
 
-public abstract class Gift {
+public class Gift {
     String Name;
     String Price;
     String image_url;
@@ -92,9 +92,5 @@ public abstract class Gift {
     public void setImage(Drawable image) {
         img = image;
     }
-
-
-    public abstract void my_func();
-
 
 }

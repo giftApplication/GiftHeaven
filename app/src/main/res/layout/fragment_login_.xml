@@ -121,7 +121,7 @@
 
             <Button
                 android:id="@+id/login_btn"
-                android:layout_width="250sp"
+                android:layout_width="267sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linlay1"
                 android:layout_centerHorizontal="true"
@@ -129,7 +129,8 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="serif"
-                android:paddingLeft="55dp"
+                android:layout_marginLeft="5dp"
+                android:paddingLeft="57dp"
                 android:paddingRight="55dp"
                 android:text="@string/login"
                 android:textAllCaps="false"
@@ -139,12 +140,12 @@
 
             <Button
                 android:id="@+id/fb_login"
-                android:layout_width="250sp"
+                android:layout_width="270sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fb_login"
-                android:layout_marginLeft="42dp"
-                android:layout_marginRight="42dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/btn_bg_f"
                 android:drawableLeft="@drawable/facebook"
                 android:fontFamily="serif"
@@ -159,11 +160,11 @@
             <Button
 
                 android:id="@+id/google_btn"
-                android:layout_width="250sp"
+                android:layout_width="270sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/google_login"
-                android:layout_marginLeft="42dp"
-                android:layout_marginRight="42dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/btn_bg_g"
                 android:drawableLeft="@drawable/google_"

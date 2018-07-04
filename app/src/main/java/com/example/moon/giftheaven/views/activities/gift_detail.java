@@ -117,7 +117,7 @@ public class gift_detail extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1=new Intent(Intent.ACTION_VIEW);
 
-               intent1.setData( Uri.parse( cursor.getString( 8 ) ));
+               intent1.setData( Uri.parse( cursor.getString( 7 ) ));
                 //  intent1.setData(Uri.parse(CustomListView.link_array));
                 cursor.close();
                 startActivity(intent1);
