@@ -82,7 +82,7 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
             //index= pos;
             view_holer.nametxt=(TextView) convertview.findViewById(R.id.text1);
             view_holer.pricetxt = (TextView) convertview.findViewById(R.id.text_d1);
-            view_holer.link = (TextView) convertview.findViewById(R.id.text_link);
+            //view_holer.link = (TextView) convertview.findViewById(R.id.text_link);
             view_holer.img = (ImageView) convertview.findViewById(R.id.img1);
             convertview.setTag(view_holer);
 
@@ -94,12 +94,12 @@ public class CustomListView extends BaseAdapter implements View.OnClickListener 
         //set data
         gift = (Wedding) giftlist.get(pos);
 
-        System.out.println("Acha============  batna zaea" + gift.getPrice());
+        //System.out.println("Acha============  batna zaea" + gift.getPrice());
 
         view_holer.pricetxt.setText("Rs. " + gift.getPrice());
         //System.out.println("gift price" + gift.getPrice());
         view_holer.nametxt.setText( gift.getName());
-        view_holer.link.setOnClickListener(this);
+        //view_holer.link.setOnClickListener(this);
         Picasso.get().load(gift.getImage_url()).into(view_holer.img);
        // view_holer.img.setImageDrawable( gift.getImage() );
         /*view_holer.nametxt.setText(gift_names[pos]);

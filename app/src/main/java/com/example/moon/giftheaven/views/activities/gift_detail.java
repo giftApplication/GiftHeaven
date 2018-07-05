@@ -101,8 +101,8 @@ public class gift_detail extends AppCompatActivity {
             //img.setImageDrawable( image );
             Picasso.get().load(image).into(img);
 
-                name.setText("Name:   " + cursor.getString(1));
-                price.setText("Price:  Rs. " + cursor.getString(2));
+                name.setText( cursor.getString(1));
+                price.setText(" Rs. " + cursor.getString(2));
                 description.setText(cursor.getString( 6) );
 
           //  }

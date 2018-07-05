@@ -187,7 +187,7 @@ public class main_activity extends AppCompatActivity {
         );
 
         lst = (ListView) findViewById(R.id.list1);
-        view_details=(TextView) findViewById(R.id.text_link);
+        //view_details=(TextView) findViewById(R.id.text_link);
 
         list = new ArrayList<Wedding>();
        // customListView=new CustomListView(this,list);
@@ -263,18 +263,16 @@ public class main_activity extends AppCompatActivity {
            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
 
                index = pos;
-               /* int id1 = view.getId();
+                int id1 = view.getId();
 
-                if(id1 == R.id.text_link) {
+                if(true) {
                     Intent intent = new Intent(getApplicationContext(), gift_detail.class);
                     intent.putExtra("Position", pos);
                     startActivity(intent);
                 }
-            }*/
-               //});
+            }
+               });
 
-               }
-           });
        }
 
     @Override

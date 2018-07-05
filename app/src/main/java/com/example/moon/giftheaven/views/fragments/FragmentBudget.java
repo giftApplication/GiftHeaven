@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.moon.giftheaven.R;
 import com.example.moon.giftheaven.views.activities.main_activity;
@@ -163,18 +164,23 @@ public class FragmentBudget extends Fragment implements AdapterView.OnItemClickL
                 p_bar.checkStateCompleted(true);
                 EditText range = (EditText)dialog1.findViewById(R.id.range);
                 bud = range.getText().toString();
-                Budget.add( bud );
+                System.out.println("bud = " + bud);
+                if(!(bud.equals( "" ))) {
+                    Budget.add( bud );
 
-                System.out.println("parts " + Budget.get(0));
+                    System.out.println( "parts " + Budget.get( 0 ) );
 
-                dialog1.setContentView(R.layout.dialog_layout);
-                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                dialog1.show();
+                    dialog1.setContentView( R.layout.dialog_layout );
+                    dialog1.getWindow().setBackgroundDrawable( new ColorDrawable( android.graphics.Color.TRANSPARENT ) );
+                    dialog1.show();
 
-                Button btn_yes = dialog1.findViewById(R.id.btn_yes);
-                Button btn_no = dialog1.findViewById(R.id.btn_no);
-                btn_yes.setOnClickListener(this);
-                btn_no.setOnClickListener(this);
+                    Button btn_yes = dialog1.findViewById( R.id.btn_yes );
+                    Button btn_no = dialog1.findViewById( R.id.btn_no );
+                    btn_yes.setOnClickListener( this );
+                    btn_no.setOnClickListener( this );
+                }
+                else
+                    Toast.makeText( getActivity(),"Kindly enter range!",Toast.LENGTH_LONG ).show();
                 break;
             case R.id.btn_no:
                 p_bar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
