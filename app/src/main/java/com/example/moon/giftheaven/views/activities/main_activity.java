@@ -98,6 +98,10 @@ public class main_activity extends AppCompatActivity {
                 filename = "birthday_gifts.json";
                 obj= new parse_json();
             }
+            else if(FragmentEvent.event.equals( "Engagement" )) {
+                filename = "cris_gifts.json";
+                obj= new parse_json();
+            }
             input = assertManager.open(filename);
             gifts_array = obj.get_JSON_wedding(input);
 
@@ -135,6 +139,17 @@ public class main_activity extends AppCompatActivity {
             }
 
             else if(FragmentEvent.event.equals( "Birthday" ))
+            {
+                eve.add(gifts_array.get(i).getEvent());
+                bud.add(gifts_array.get(i).getPrice());
+                name_.add(gifts_array.get( i ).getName());
+                price.add(gifts_array.get( i ).getPrice());
+                descrip.add(gifts_array.get( i ).getDescription());
+                img_id.add(gifts_array.get(i).getImg());
+                link.add(gifts_array.get( i ).getUrl());
+            }
+
+            else if(FragmentEvent.event.equals( "Engagement" ))
             {
                 eve.add(gifts_array.get(i).getEvent());
                 bud.add(gifts_array.get(i).getPrice());
