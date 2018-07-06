@@ -41,7 +41,7 @@ public class FragmentEvent extends Fragment implements AdapterView.OnItemClickLi
 
     String[] events_name;
     ListView list;
-    int[] imgs = {R.drawable.b1, R.drawable.h, R.drawable.w, R.drawable.eng_};
+    int[] imgs = {R.drawable.b1, R.drawable.h, R.drawable.w, R.drawable.cris};
 
     public FragmentEvent() {
         // Required empty public constructor

@@ -98,7 +98,7 @@ public class main_activity extends AppCompatActivity {
                 filename = "birthday_gifts.json";
                 obj= new parse_json();
             }
-            else if(FragmentEvent.event.equals( "Engagement" )) {
+            else if(FragmentEvent.event.equals( "Christmas" )) {
                 filename = "cris_gifts.json";
                 obj= new parse_json();
             }
@@ -149,7 +149,7 @@ public class main_activity extends AppCompatActivity {
                 link.add(gifts_array.get( i ).getUrl());
             }
 
-            else if(FragmentEvent.event.equals( "Engagement" ))
+            else if(FragmentEvent.event.equals( "Christmas" ))
             {
                 eve.add(gifts_array.get(i).getEvent());
                 bud.add(gifts_array.get(i).getPrice());
