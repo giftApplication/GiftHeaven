@@ -20,25 +20,25 @@ android:id="@+id/frag_2">
     </include>
 
 
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/main_nav"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         app:itemBackground="@color/color1"
         app:itemIconTint="@drawable/nav_selector"
-        app:itemTextColor="@drawable/nav_selector"
-        app:menu="@menu/navigation_items_1"
 
-        >
+        app:itemTextColor="@drawable/nav_selector"
+        app:menu="@menu/navigation_items_1">
 
     </android.support.design.widget.BottomNavigationView>
 
     <com.example.moon.giftheaven.views.fragments.LockViewpager
         android:id="@+id/pager1"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_marginBottom="59sp"
         />
 
